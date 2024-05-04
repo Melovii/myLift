@@ -18,5 +18,12 @@ public class Main
         else {
             System.out.println("Number is greater than " +value);
         }
+
+        doNot();
+    }
+
+    public static void doNot()
+    {
+        System.out.println("Do NOT!");
     }
 }
