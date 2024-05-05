@@ -27,7 +27,7 @@ public class addWorkoutWindow extends JFrame
     {
 
         // --- --- LABEL PROPERTIES --- ---
-        JLabel workoutNameL = new JLabel();
+        workoutNameL = new JLabel();
         workoutNameL.setText("Workout Name: ");
         workoutNameL.setFont(new Font("Calibri", Font.BOLD, 21));
         workoutNameL.setForeground(new Color(230, 230, 230));
