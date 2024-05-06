@@ -3,22 +3,9 @@ import java.awt.*;
 
 public class addWorkoutWindow extends JFrame
 {
-    JButton addExerciseB;
-    JButton saveWorkoutB;
-    JButton cancelWorkoutB;
-
-    JLabel workoutNameL;
-    JLabel exerciseNameL;
-    JLabel noSetsL;
-    JLabel noRepsL;
-    JLabel noRestL;
-
-    // text fields will be repeated...
-    JTextField workoutNameTF;
-    JTextField exerciseNameTF;
-    JTextField noSetsTF;
-    JTextField noRepsTF;
-    JTextField noRestTF;
+    JButton addExerciseB, saveWorkoutB, cancelWorkoutB;
+    JLabel workoutNameL, exerciseNameL, noSetsL, noRepsL, noRestL;
+    JTextField workoutNameTF, exerciseNameTF, noSetsTF, noRepsTF, noRestTF;
 
 
     int bY = 200; // todo: change according to the size of the boxes
@@ -90,7 +77,6 @@ public class addWorkoutWindow extends JFrame
 
 
 
-
         // ---  ---  BUTTON PROPERTIES  ---  ---
         addExerciseB = new JButton("Add Exercise");
         addExerciseB.setFont(new Font("Calibri", Font.BOLD, 21));
@@ -110,7 +96,6 @@ public class addWorkoutWindow extends JFrame
         cancelWorkoutB.setFocusable(false);
         this.add(cancelWorkoutB);
         // --------------------------------------
-
 
 
 
@@ -137,7 +122,6 @@ public class addWorkoutWindow extends JFrame
 
 
 
-
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setLayout(null);
         this.setSize(520, 300);
@@ -149,5 +133,10 @@ public class addWorkoutWindow extends JFrame
 
         this.setVisible(true);
         // --------------------------------------
+    }
+
+    public void saveData()
+    {
+
     }
 }

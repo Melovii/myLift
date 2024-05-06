@@ -4,13 +4,8 @@ import java.awt.*;
 public class workoutWindow extends JFrame {
 
     JButton startB;
-
-    JLabel currentExL;
-    JLabel nextExL;
-    JLabel elapsedTime;
-
-    JPanel currentExP;
-    JPanel nextExP;
+    JLabel currentExL, nextExL, elapsedTime;
+    JPanel currentExP, nextExP;
 
     workoutWindow() {
         this.setLayout(null);
@@ -26,7 +21,6 @@ public class workoutWindow extends JFrame {
         nextExP.setOpaque(false);
         this.add(nextExP);
         // --------------------------------
-
 
 
 
@@ -57,7 +51,6 @@ public class workoutWindow extends JFrame {
 
 
 
-
         // --- --- BUTTON PROPERTIES --- ---
         startB = new JButton("Start");
         startB.setFont(new Font("Calibri", Font.BOLD, 21));
@@ -65,7 +58,6 @@ public class workoutWindow extends JFrame {
         startB.setFocusable(false);
         this.add(startB);
         // --------------------------------
-
 
 
 
