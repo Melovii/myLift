@@ -11,8 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.Integer.parseInt;
 
-public class addWorkoutWindow extends JFrame
-{
+public class addWorkoutWindow extends JFrame {
     JButton addExerciseB, saveWorkoutB, cancelWorkoutB;
     JLabel workoutNameL, exerciseNameL, noSetsL, noRepsL, noRestL;
     JTextField workoutNameTF, exerciseNameTF, noSetsTF, noRepsTF, noRestTF;
@@ -23,7 +22,7 @@ public class addWorkoutWindow extends JFrame
 
     ArrayList<Integer> newExercises = new ArrayList<Integer>();
 
-    int bY = 200; // todo: change according to the size of the boxes
+    int bY = 200;
 
     addWorkoutWindow()
     {
@@ -183,7 +182,6 @@ public class addWorkoutWindow extends JFrame
                     dispose();
                 }
         );
-
 
         // --------------------------------------
 

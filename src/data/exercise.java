@@ -1,6 +1,7 @@
 package data;
 
-public class exercise {
+public class exercise
+{
     String exerciseName;
     Integer numSets;
     Integer numReps;
