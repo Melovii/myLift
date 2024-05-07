@@ -2,37 +2,34 @@ package data;
 
 import java.io.*;
 
-public class dataManipulation
-{
+public class dataManipulation {
     // method to save data using ArrayList
-    public void saveData(workout newWorkout)
-    {
+    public void saveData(workout newWorkout) {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("workouts.txt"));
 
-            bw.write("workout name: ");
+//            bw.write("workout name: ");
             bw.write(newWorkout.workoutName);
             bw.newLine();
 
+//            bw.write("exercises:\n");
             for (exercise exc : newWorkout.exercises) {
-                bw.write("exercises:\n");
                 bw.write(exc.exerciseName);
                 bw.write(", ");
-                bw.write("" +exc.numSets);
+                bw.write("" + exc.numSets);
                 bw.write(", ");
-                bw.write("" +exc.numReps);
+                bw.write("" + exc.numReps);
                 bw.write(", ");
-                bw.write("" +exc.restTime);
+                bw.write("" + exc.restTime);
                 bw.newLine();
             }
 
             bw.close();
 
-        } catch (Exception e){
-        System.out.println("Error saving data: " +e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error saving data: " + e.getMessage());
         }
     }
-
 
     // method to load data from a specific file
     public void loadData()
