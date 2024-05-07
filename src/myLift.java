@@ -2,7 +2,7 @@
 
 import windows.mainWindow;
 
-public class Main
+public class myLift
 {
     public static void main (String[] args)
     {
