@@ -14,21 +14,19 @@ import static java.lang.Integer.parseInt;
 public class addWorkoutWindow extends JFrame
 {
     JButton addExerciseB, saveWorkoutB, cancelWorkoutB;
+    JLabel workoutNameL, exerciseNameL, noSetsL, noRepsL, noRestL;
+    JTextField workoutNameTF, exerciseNameTF, noSetsTF, noRepsTF, noRestTF;
     JTextField[] exerciseNameTFi = new JTextField[10];
     JTextField[] noSetsTFi = new JTextField[10];
     JTextField[] noRepsTFi = new JTextField[10];
     JTextField[] noRestTFi = new JTextField[10];
-    JLabel workoutNameL, exerciseNameL, noSetsL, noRepsL, noRestL;
-    JTextField workoutNameTF, exerciseNameTF, noSetsTF, noRepsTF, noRestTF;
 
     ArrayList<Integer> newExercises = new ArrayList<Integer>();
-
 
     int bY = 200; // todo: change according to the size of the boxes
 
     addWorkoutWindow()
     {
-
         // --- --- LABEL PROPERTIES --- ---
         workoutNameL = new JLabel();
         workoutNameL.setText("Workout Name: ");
@@ -114,6 +112,7 @@ public class addWorkoutWindow extends JFrame
         // --------------------------------------
 
 
+
         AtomicInteger i = new AtomicInteger();
 
         // ---  ---  BUTTON ACTIONS  ---  ---
@@ -143,14 +142,25 @@ public class addWorkoutWindow extends JFrame
                         // Create a new workout object
                         workout workoutToSave = new workout(workoutNameTF.getText());
 
-                        // Get values from text fields
+                        // Add data from the first row of JTextFields
+                        String exerciseName = exerciseNameTF.getText();
                         int numSets = Integer.parseInt(noSetsTF.getText());
                         int numReps = Integer.parseInt(noRepsTF.getText());
                         int restTime = Integer.parseInt(noRestTF.getText());
+                        exercise firstExercise = new exercise(exerciseName, numSets, numReps, restTime);
+                        workoutToSave.exercises.add(firstExercise);
 
-                        // Create an exercise object for each entry and add to workoutToSave.exercises
-                        exercise newExercise = new exercise(exerciseNameTF.getText(), numSets, numReps, restTime);
-                        workoutToSave.exercises.add(newExercise);
+                        // Add data from the rest of the JTextFields
+                        for (int k = 0; k < exerciseNameTFi.length; k++) {
+                            if (exerciseNameTFi[k] != null && noSetsTFi[k] != null && noRepsTFi[k] != null && noRestTFi[k] != null) {
+                                String name = exerciseNameTFi[k].getText();
+                                int sets = Integer.parseInt(noSetsTFi[k].getText());
+                                int reps = Integer.parseInt(noRepsTFi[k].getText());
+                                int rest = Integer.parseInt(noRestTFi[k].getText());
+                                exercise additionalExercise = new exercise(name, sets, reps, rest);
+                                workoutToSave.exercises.add(additionalExercise);
+                            }
+                        }
 
                         // Call dataManipulation to save the workout (assuming dataManipulation is instantiated)
                         dataManipulator.saveData(workoutToSave);
@@ -167,6 +177,7 @@ public class addWorkoutWindow extends JFrame
                 }
         );
 
+
         cancelWorkoutB.addActionListener(
                 (e) -> {
                     dispose();
@@ -175,7 +186,6 @@ public class addWorkoutWindow extends JFrame
 
 
         // --------------------------------------
-
 
 
 
@@ -192,26 +202,30 @@ public class addWorkoutWindow extends JFrame
         // --------------------------------------
     }
 
+
+
     // Add a row of JTextFields
     public void addBoxRow(int i)
     {
+        int yPosition = i * 50 + 120;
+
         exerciseNameTFi[i] = new JTextField();
-        exerciseNameTFi[i].setBounds(45, i*50+120, 145, 25);
+        exerciseNameTFi[i].setBounds(45, yPosition, 145, 25);
         exerciseNameTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
         this.add(exerciseNameTFi[i]);
 
         noSetsTFi[i] = new JTextField();
-        noSetsTFi[i].setBounds(235, i*50+120, 40, 25);
+        noSetsTFi[i].setBounds(235, yPosition, 40, 25);
         noSetsTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
         this.add(noSetsTFi[i]);
 
         noRepsTFi[i] = new JTextField();
-        noRepsTFi[i].setBounds(315, i*50+120, 40, 25);
+        noRepsTFi[i].setBounds(315, yPosition, 40, 25);
         noRepsTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
         this.add(noRepsTFi[i]);
 
         noRestTFi[i] = new JTextField();
-        noRestTFi[i].setBounds(400, i*50+120, 40, 25);
+        noRestTFi[i].setBounds(400, yPosition, 40, 25);
         noRestTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
         this.add(noRestTFi[i]);
     }
