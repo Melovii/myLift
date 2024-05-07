@@ -10,16 +10,18 @@ public class dataManipulation
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("workouts.txt"));
 
+            bw.write("workout name: ");
             bw.write(newWorkout.workoutName);
             bw.newLine();
 
             for (exercise exc : newWorkout.exercises) {
+                bw.write("exercises:\n");
                 bw.write(exc.exerciseName);
-                bw.write(",");
+                bw.write(", ");
                 bw.write("" +exc.numSets);
-                bw.write(",");
+                bw.write(", ");
                 bw.write("" +exc.numReps);
-                bw.write(",");
+                bw.write(", ");
                 bw.write("" +exc.restTime);
                 bw.newLine();
             }
