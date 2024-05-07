@@ -1,11 +1,22 @@
+package windows;
+
+import data.dataManipulation;
+import data.exercise;
+import data.workout;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 public class addWorkoutWindow extends JFrame
 {
     JButton addExerciseB, saveWorkoutB, cancelWorkoutB;
     JLabel workoutNameL, exerciseNameL, noSetsL, noRepsL, noRestL;
     JTextField workoutNameTF, exerciseNameTF, noSetsTF, noRepsTF, noRestTF;
+
+    ArrayList<Integer> newExercises = new ArrayList<Integer>();
 
 
     int bY = 200; // todo: change according to the size of the boxes
@@ -109,6 +120,39 @@ public class addWorkoutWindow extends JFrame
                         saveWorkoutB.setBounds(20, bY, 100, 40);
                         cancelWorkoutB.setBounds(380, bY, 100, 40);
                         this.setLocationRelativeTo(null);
+                        addBoxRow();
+                }
+        );
+
+
+        dataManipulation dataManipulator = new dataManipulation();
+        saveWorkoutB.addActionListener(
+                (e) -> {
+                    try {
+                        // Create a new workout object
+                        workout workoutToSave = new workout(workoutNameTF.getText());
+
+                        // Get values from text fields
+                        int numSets = Integer.parseInt(noSetsTF.getText());
+                        int numReps = Integer.parseInt(noRepsTF.getText());
+                        int restTime = Integer.parseInt(noRestTF.getText());
+
+                        // Create an exercise object for each entry and add to workoutToSave.exercises
+                        exercise newExercise = new exercise(exerciseNameTF.getText(), numSets, numReps, restTime);
+                        workoutToSave.exercises.add(newExercise);
+
+                        // Call dataManipulation to save the workout (assuming dataManipulation is instantiated)
+                        dataManipulator.saveData(workoutToSave);
+
+                        // Show success message
+                        JOptionPane.showMessageDialog(null, "Workout saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                        new mainWindow();
+
+                    } catch (Exception ex) {
+                        // Show error message
+                        JOptionPane.showMessageDialog(null, "Error saving workout: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
         );
 
@@ -117,6 +161,7 @@ public class addWorkoutWindow extends JFrame
                     dispose();
                 }
         );
+
 
         // --------------------------------------
 
@@ -135,8 +180,7 @@ public class addWorkoutWindow extends JFrame
         // --------------------------------------
     }
 
-    public void saveData()
+    public void addBoxRow()
     {
-
     }
 }
