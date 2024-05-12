@@ -1,9 +1,6 @@
 package data;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.*;
-import java.sql.SQLOutput;
 
 public class dataManipulation
 {
