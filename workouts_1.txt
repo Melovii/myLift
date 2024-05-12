@@ -1,0 +1,25 @@
+Chest Day
+push up
+3
+8
+30
+incline bench
+3
+12
+40
+decline bench
+3
+8
+30
+deadlift
+1
+1
+80
+pull up 
+3
+10
+35
+deadlift
+1
+1
+1

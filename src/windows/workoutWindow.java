@@ -2,6 +2,7 @@ package windows;
 
 import javax.swing.*;
 import java.awt.*;
+import data.*;
 
 public class workoutWindow extends JFrame {
 
@@ -9,8 +10,14 @@ public class workoutWindow extends JFrame {
     JLabel currentExL, nextExL, elapsedTime;
     JPanel currentExP, nextExP;
 
-    workoutWindow() {
+    workoutWindow(int index) {
+
+        dataManipulation dataManipulator = new dataManipulation(index);
+        dataManipulator.loadData(1);
+
+
         this.setLayout(null);
+
 
         // --- --- PANEL PROPERTIES --- ---
         currentExP = new JPanel(new BorderLayout());
@@ -33,6 +40,7 @@ public class workoutWindow extends JFrame {
         currentExL.setForeground(new Color(230, 230, 230));
         currentExL.setHorizontalAlignment(SwingConstants.CENTER);
         currentExL.setVerticalAlignment(SwingConstants.TOP);
+        currentExL.setVisible(false);
         currentExP.add(currentExL);
 
         nextExL = new JLabel();
@@ -41,6 +49,7 @@ public class workoutWindow extends JFrame {
         nextExL.setForeground(new Color(230, 230, 230));
         nextExL.setHorizontalAlignment(SwingConstants.CENTER);
         nextExL.setVerticalAlignment(SwingConstants.TOP);
+        nextExL.setVisible(false);
         nextExP.add(nextExL);
 
         elapsedTime = new JLabel();
@@ -67,6 +76,10 @@ public class workoutWindow extends JFrame {
         startB.addActionListener(
                 (e) -> {
 
+                    currentExL.setVisible(true);
+                    currentExL.setText("Current Exercise: "+dataManipulator.exerciseName[0]);
+                    nextExL.setVisible(true);
+
                 }
         );
         // --------------------------------
@@ -87,3 +100,6 @@ public class workoutWindow extends JFrame {
 
     }
 }
+
+
+// TODO: change line datamanpulator to take variable "index"
