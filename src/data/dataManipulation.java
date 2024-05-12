@@ -1,11 +1,55 @@
 package data;
 
-import java.io.*;
+import org.w3c.dom.ls.LSOutput;
 
-public class dataManipulation {
+import java.io.*;
+import java.sql.SQLOutput;
+
+public class dataManipulation
+{
+
+    // ---  ---  loadData Variables  ---  ---
+
+    int noOfLines = 0;
+    public String[] exerciseName;
+    public int[] numSets;
+    public int[] numReps;
+    public int[] restTime;
+
+    public dataManipulation(int index){
+
+        // getting numberoflines of the workout
+        try {
+            String fileName = "workouts_" + index + ".txt";
+            BufferedReader br1 = new BufferedReader(new FileReader(fileName));
+
+            while(br1.readLine() != null) {
+                noOfLines++;
+            }
+            br1.close();
+
+        }
+        catch (Exception e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+
+        // no clue why we dont need the -2 anymore but it works
+        this.exerciseName = new String[(noOfLines)/4];
+        this.numSets = new int[(noOfLines)/4];
+        this.numReps = new int[(noOfLines)/4];
+        this.restTime = new int[(noOfLines)/4];
+
+    }
+
     private static final String INDEX_FILE = "index.txt";
+
+
+    // VVVV constructor without a parameter, its needed apperantly
+    public dataManipulation() {}
+
+    public void saveData(workout newWorkout)
     // method to save data using ArrayList
-        public void saveData(workout newWorkout) {
+        {
             try {
                 int index = getNextIndex();
                 String fileName = "workouts_" + index + ".txt";
@@ -66,29 +110,29 @@ public class dataManipulation {
             }
         }
 
-    // method to load data from a specific file
     public void loadData(int index)
+    // method to load data from a specific file
     {
-        // TODO: ASK FOR INDEX FROM GUI AND DISPLAY BASED ON INDEX
-        // TODO: FIND A WAY TO DELETE/VIEW INDEXES
+        System.out.println("Value of noOfLines "+(noOfLines)/4);
 
         try {
             String fileName = "workouts_" + index + ".txt";
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            BufferedReader br2 = new BufferedReader(new FileReader(fileName));
 
-            String workoutName = br.readLine();
+            String workoutName = br2.readLine();
             System.out.println(workoutName);
-            String exerciseName = br.readLine();
-            System.out.println(exerciseName);
-            int numSets = Integer.parseInt(br.readLine());
-            System.out.println(numSets);
-            int numReps = Integer.parseInt(br.readLine());
-            System.out.println(numReps);
-            int restTime = Integer.parseInt(br.readLine());
-            System.out.println(restTime);
 
-            br.close();
-
+            for (int k = 0; k< (noOfLines)/4; k++) {
+                exerciseName[k] = br2.readLine();
+                System.out.println(exerciseName[k]);
+                numSets[k] = Integer.parseInt(br2.readLine());
+                System.out.println(numSets[k]);
+                numReps[k] = Integer.parseInt(br2.readLine());
+                System.out.println(numReps[k]);
+                restTime[k] = Integer.parseInt(br2.readLine());
+                System.out.println(restTime[k]);
+            }
+            br2.close();
         }
         catch (Exception e) {
             System.out.println("Error reading file: " + e.getMessage());
