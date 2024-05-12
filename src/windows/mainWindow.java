@@ -64,7 +64,7 @@ public class mainWindow extends JFrame
         workoutB.addActionListener(
                 (e) -> {
                     dispose();
-                    new workoutWindow(1);
+                    new workoutWindow(1); // TODO: ASK USER FOR INDEX (VIEW WORKOUTS)
                 }
         );
 

@@ -2,6 +2,8 @@ package windows;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import data.*;
 
 public class workoutWindow extends JFrame {
@@ -13,7 +15,7 @@ public class workoutWindow extends JFrame {
     workoutWindow(int index) {
 
         dataManipulation dataManipulator = new dataManipulation(index);
-        dataManipulator.loadData(1);
+        dataManipulator.loadData(1); // TODO: INPUT INDEX FROM USER
 
 
         this.setLayout(null);
@@ -73,13 +75,21 @@ public class workoutWindow extends JFrame {
 
 
         // --- --- BUTTON ACTIONS --- ---
+        // TODO: make a breakpoint for when next and current exercise are equal (in terms of index)
+        AtomicInteger i = new AtomicInteger();
         startB.addActionListener(
                 (e) -> {
-
+                    i.getAndIncrement();
+                    if ((i.get())%2 == 0) {
+                        startB.setText("Start");
+                    } else {
+                        startB.setText("Rest");
+                    }
                     currentExL.setVisible(true);
-                    currentExL.setText("Current Exercise: "+dataManipulator.exerciseName[0]);
+                    currentExL.setText("Current Exercise: "+dataManipulator.exerciseName[i.get()]);
                     nextExL.setVisible(true);
-
+                    int indexo = i.get() + 1;
+                    nextExL.setText("Next Exercise: "+dataManipulator.exerciseName[indexo]);
                 }
         );
         // --------------------------------
