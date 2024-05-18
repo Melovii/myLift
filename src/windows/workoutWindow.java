@@ -14,7 +14,7 @@ public class workoutWindow extends JFrame {
     JButton startB;
     JLabel currentExL, nextExL, setsL, repsL, restL, elapsedTimeL;
     JPanel currentExP, nextExP;
-    int elapsed_timeE, hoursE, minutesE, secondsE;
+    int elapsed_timeE, hoursE, minutesE, secondsE, timeLeft;
 
     Timer elapsedTimer = new Timer(1000, new ActionListener() {
         @Override
@@ -146,12 +146,13 @@ public class workoutWindow extends JFrame {
                     nextExL.setVisible(true);
                     int indexo = i.get() + 1;
                     nextExL.setText("Next Exercise: " + dataManipulator.exerciseName[indexo - 1]);
+
+                    restL.setVisible(true);
+                    timeLeft = dataManipulator.restTime[i.get()-1];
+                    startTimer();
                 }
         );
-
-
         // --------------------------------
-
 
 
 
@@ -166,6 +167,29 @@ public class workoutWindow extends JFrame {
         this.setVisible(true);
         // --------------------------------------
 
+    }
+
+    Timer timer = new Timer(1000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            timeLeft -= 1;
+            restL.setText("" +timeLeft);
+            if (timeLeft == 0)
+            {
+                timer.stop();
+                restL.setText("TIMER ENDED");
+            }
+        }
+    });
+
+    public void startTimer()
+    {
+        timer.start();
+    }
+
+    public void stopTimer()
+    {
+        timer.stop();
     }
 }
 
