@@ -11,8 +11,8 @@ import data.*;
 
 public class workoutWindow extends JFrame {
 
-    JButton startB;
-    JLabel currentExL, nextExL, setsL, repsL, restL, elapsedTimeL;
+    JButton startB, setB, restB;
+    JLabel currentExL, nextExL, setsL, repsL, restL, elapsedTimeL, setsLeftL;
     JPanel currentExP, nextExP;
     int elapsed_timeE, hoursE, minutesE, secondsE, timeLeft;
 
@@ -36,7 +36,7 @@ public class workoutWindow extends JFrame {
     workoutWindow(int index) {
 
         dataManipulation dataManipulator = new dataManipulation(index);
-        dataManipulator.loadData(1); // TODO: INPUT INDEX FROM USER
+        dataManipulator.loadData(2); // TODO: INPUT INDEX FROM USER
 
 
         this.setLayout(null);
@@ -83,6 +83,14 @@ public class workoutWindow extends JFrame {
         setsL.setVisible(false);
         this.add(setsL);
 
+        setsLeftL = new JLabel();
+        setsLeftL.setText("Sets left: ");
+        setsLeftL.setFont(new Font("Calibri", Font.BOLD, 25));
+        setsLeftL.setForeground(new Color(230, 230, 230));
+        setsLeftL.setBounds(100, 200, 300, 100);
+        setsLeftL.setVisible(true);
+        this.add(setsLeftL);
+
         repsL = new JLabel();
         repsL.setText("Reps: ");
         repsL.setFont(new Font("Calibri", Font.BOLD, 25));
@@ -91,8 +99,8 @@ public class workoutWindow extends JFrame {
         repsL.setVisible(false);
         this.add(repsL);
 
+
         restL = new JLabel();
-        restL.setText("Rest: ");
         restL.setFont(new Font("Calibri", Font.BOLD, 25));
         restL.setForeground(new Color(230, 230, 230));
         restL.setBounds(400, 100, 100, 100);
@@ -116,6 +124,20 @@ public class workoutWindow extends JFrame {
         startB.setBounds(275, 225 - 16, 250, 150);
         startB.setFocusable(false);
         this.add(startB);
+
+        setB = new JButton("Start set");
+        setB.setFont(new Font("Calibri", Font.BOLD, 21));
+        setB.setBounds(275, 225 - 16, 250, 150);
+        setB.setFocusable(false);
+        setB.setVisible(false);
+        this.add(setB);
+
+        restB = new JButton("Rest");
+        restB.setFont(new Font("Calibri", Font.BOLD, 21));
+        restB.setBounds(275, 225 - 16, 250, 150);
+        restB.setFocusable(false);
+        restB.setVisible(false);
+        this.add(restB);
         // --------------------------------
 
 
@@ -123,34 +145,65 @@ public class workoutWindow extends JFrame {
         // --- --- BUTTON ACTIONS --- ---
         // TODO: make a breakpoint for when next and current exercise are equal (in terms of index)
         AtomicInteger i = new AtomicInteger();
+        AtomicInteger j = new AtomicInteger();
         startB.addActionListener(
                 (e) -> {
-                    i.getAndIncrement();
-                    if ((i.get()) % 2 == 0) {
-                        startB.setText("Start");
-                        int rest = dataManipulator.restTime[i.get() - 1];
-                        startTimer();
-                    } else {
-                        startB.setText("Rest");
+
+                    try {
+                        i.getAndIncrement();
+
+                        currentExL.setVisible(true);
+                        currentExL.setText("Current Exercise: " + dataManipulator.exerciseName[i.get() - 1]);
+
+                        setsL.setVisible(true);
+                        int sets = dataManipulator.numSets[i.get() - 1];
+                        setsL.setText("Sets: " + sets);
+
+                        j.set(0);
+                        sets += j.getAndIncrement();
+                        setsLeftL.setText("Sets left: "+sets);
+
+                        repsL.setVisible(true);
+                        repsL.setText("Reps: " + dataManipulator.numReps[i.get() - 1]);
+
+                        nextExL.setVisible(true);
+                        int indexo = i.get() + 1;
+                        nextExL.setText("Next Exercise: " + dataManipulator.exerciseName[indexo - 1]);
+
                         restL.setVisible(false);
-                        stopTimer();
+                        startB.setVisible(false);
+                        restB.setVisible(true);
+                    } catch (ArrayIndexOutOfBoundsException ex) {
+                        System.out.println("brauh");;
+                        dispose();
+                        JOptionPane.showMessageDialog(null, "You finished your workout!");
                     }
+                }
+        );
 
-                    currentExL.setVisible(true);
-                    currentExL.setText("Current Exercise: " + dataManipulator.exerciseName[i.get() - 1]);
+        setB.addActionListener(
+                (e) -> {
+                    int setsLeft = dataManipulator.numSets[i.get()-1] - j.getAndIncrement();
+                    setsLeftL.setText("Sets left: "+setsLeft);
+                    setB.setVisible(false);
+                    restB.setVisible(true);
+                    restL.setVisible(false);
+                }
+        );
 
-                    setsL.setVisible(true);
-                    setsL.setText("Sets: " + dataManipulator.numSets[i.get() - 1]);
-
-                    repsL.setVisible(true);
-                    repsL.setText("Reps: " + dataManipulator.numReps[i.get() - 1]);
-
-                    nextExL.setVisible(true);
-                    int indexo = i.get() + 1;
-                    nextExL.setText("Next Exercise: " + dataManipulator.exerciseName[indexo - 1]);
-
+        restB.addActionListener(
+                (e) -> {
+                    timeLeft = dataManipulator.restTime[i.get() - 1];
+                    restL.setText(""+timeLeft);
+                    timeLeft--;
+                    startTimer();
                     restL.setVisible(true);
-                    timeLeft = dataManipulator.restTime[i.get()-1];
+                    restB.setVisible(false);
+                    if(setsLeftL.getText().equals("Sets left: 1")) {
+                        startB.setVisible(true);
+                    } else {
+                        setB.setVisible(true);
+                    }
                 }
         );
         // --------------------------------
@@ -173,15 +226,15 @@ public class workoutWindow extends JFrame {
     Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            timeLeft -= 1;
-            restL.setText("" +timeLeft);
-            if (timeLeft == 0)
-            {
+            restL.setText("" + timeLeft);
+            if (timeLeft == 0) {
                 timer.stop();
                 restL.setText("TIMER ENDED");
             }
+            timeLeft -= 1;
         }
-    });
+    }
+    );
 
     public void startTimer()
     {
