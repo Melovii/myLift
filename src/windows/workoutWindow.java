@@ -5,30 +5,34 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.TimerTask;
 
 import data.*;
 
 public class workoutWindow extends JFrame {
 
     JButton startB;
-    JLabel currentExL, nextExL, sets, reps, elapsedTime;
+    JLabel currentExL, nextExL, setsL, repsL, restL, elapsedTimeL;
     JPanel currentExP, nextExP;
-    int elapsed_time, hours, minutes, seconds;
+    int elapsed_timeE, hoursE, minutesE, secondsE;
+
     Timer elapsedTimer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            elapsed_time += 1000;
-            hours = elapsed_time/3600000;
-            minutes = (elapsed_time/60000)%60;
-            seconds = (elapsed_time/1000)%60;
+            elapsed_timeE += 1000;
+            hoursE = elapsed_timeE/3600000;
+            minutesE = (elapsed_timeE/60000)%60;
+            secondsE = (elapsed_timeE/1000)%60;
 
-            String hours_string = String.format("%02d", hours);
-            String minutes_string = String.format("%02d", minutes);
-            String seconds_string = String.format("%02d", seconds);
+            String hours_string = String.format("%02d", hoursE);
+            String minutes_string = String.format("%02d", minutesE);
+            String seconds_string = String.format("%02d", secondsE);
 
-            elapsedTime.setText(hours_string + ":" + minutes_string + ":" + seconds_string);
+            elapsedTimeL.setText(hours_string + ":" + minutes_string + ":" + seconds_string);
         }
     });
+
+
     workoutWindow(int index) {
 
         dataManipulation dataManipulator = new dataManipulation(index);
@@ -71,29 +75,37 @@ public class workoutWindow extends JFrame {
         nextExL.setVisible(false);
         nextExP.add(nextExL);
 
-        sets = new JLabel();
-        sets.setText("Sets: ");
-        sets.setFont(new Font("Calibri", Font.BOLD, 25));
-        sets.setForeground(new Color(230, 230, 230));
-        sets.setBounds(100, 100, 100, 100);
-        sets.setVisible(false);
-        this.add(sets);
+        setsL = new JLabel();
+        setsL.setText("Sets: ");
+        setsL.setFont(new Font("Calibri", Font.BOLD, 25));
+        setsL.setForeground(new Color(230, 230, 230));
+        setsL.setBounds(100, 100, 100, 100);
+        setsL.setVisible(false);
+        this.add(setsL);
 
-        reps = new JLabel();
-        reps.setText("Reps: ");
-        reps.setFont(new Font("Calibri", Font.BOLD, 25));
-        reps.setForeground(new Color(230, 230, 230));
-        reps.setBounds(300, 100, 100, 100);
-        reps.setVisible(false);
-        this.add(reps);
+        repsL = new JLabel();
+        repsL.setText("Reps: ");
+        repsL.setFont(new Font("Calibri", Font.BOLD, 25));
+        repsL.setForeground(new Color(230, 230, 230));
+        repsL.setBounds(300, 100, 100, 100);
+        repsL.setVisible(false);
+        this.add(repsL);
 
-        elapsedTime = new JLabel();
-        elapsedTime.setText("00:00:00");
-        elapsedTime.setFont(new Font("Calibri", Font.BOLD, 25));
-        elapsedTime.setForeground(new Color(230, 230, 230));
-        elapsedTime.setBounds(25, 0, 100, 100);
+        restL = new JLabel();
+        restL.setText("Rest: ");
+        restL.setFont(new Font("Calibri", Font.BOLD, 25));
+        restL.setForeground(new Color(230, 230, 230));
+        restL.setBounds(400, 100, 100, 100);
+        restL.setVisible(false);
+        this.add(restL);
+
+        elapsedTimeL = new JLabel();
+        elapsedTimeL.setText("00:00:00");
+        elapsedTimeL.setFont(new Font("Calibri", Font.BOLD, 25));
+        elapsedTimeL.setForeground(new Color(230, 230, 230));
+        elapsedTimeL.setBounds(25, 0, 100, 100);
         elapsedTimer.start();
-        this.add(elapsedTime);
+        this.add(elapsedTimeL);
         // --------------------------------
 
 
@@ -114,25 +126,30 @@ public class workoutWindow extends JFrame {
         startB.addActionListener(
                 (e) -> {
                     i.getAndIncrement();
-                    if ((i.get())%2 == 0) {
+                    if ((i.get()) % 2 == 0) {
                         startB.setText("Start");
+                        int rest = dataManipulator.restTime[i.get() - 1];
+
                     } else {
                         startB.setText("Rest");
                     }
+
                     currentExL.setVisible(true);
-                    currentExL.setText("Current Exercise: "+dataManipulator.exerciseName[i.get()-1]);
+                    currentExL.setText("Current Exercise: " + dataManipulator.exerciseName[i.get() - 1]);
 
-                    sets.setVisible(true);
-                    sets.setText("Sets: "+dataManipulator.numSets[i.get()-1]);
+                    setsL.setVisible(true);
+                    setsL.setText("Sets: " + dataManipulator.numSets[i.get() - 1]);
 
-                    reps.setVisible(true);
-                    reps.setText("Reps: "+dataManipulator.numReps[i.get()-1]);
+                    repsL.setVisible(true);
+                    repsL.setText("Reps: " + dataManipulator.numReps[i.get() - 1]);
 
                     nextExL.setVisible(true);
                     int indexo = i.get() + 1;
-                    nextExL.setText("Next Exercise: "+dataManipulator.exerciseName[indexo-1]);
+                    nextExL.setText("Next Exercise: " + dataManipulator.exerciseName[indexo - 1]);
                 }
         );
+
+
         // --------------------------------
 
 
