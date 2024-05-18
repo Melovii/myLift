@@ -128,7 +128,7 @@ public class workoutWindow extends JFrame {
                     i.getAndIncrement();
                     if ((i.get()) % 2 == 0) {
                         startB.setText("Start");
-                        int rest = dataManipulator.restTime[i.get() - 1];
+                        timeLeft = dataManipulator.restTime[i.get()-1];
                         startTimer();
                     } else {
                         startB.setText("Rest");
@@ -150,7 +150,6 @@ public class workoutWindow extends JFrame {
                     nextExL.setText("Next Exercise: " + dataManipulator.exerciseName[indexo - 1]);
 
                     restL.setVisible(true);
-                    timeLeft = dataManipulator.restTime[i.get()-1];
                 }
         );
         // --------------------------------
@@ -164,6 +163,7 @@ public class workoutWindow extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.setTitle("Working Out");
 
         this.setVisible(true);
         // --------------------------------------

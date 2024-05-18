@@ -15,6 +15,7 @@ public class infoWindow extends JFrame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.setTitle("Information");
 
         this.setVisible(true);
     }

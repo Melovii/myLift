@@ -180,6 +180,7 @@ public class addWorkoutWindow extends JFrame {
         cancelWorkoutB.addActionListener(
                 (e) -> {
                     dispose();
+                    new mainWindow();
                 }
         );
 
@@ -195,6 +196,7 @@ public class addWorkoutWindow extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.setTitle("Add Workout");
 
         this.setVisible(true);
         // --------------------------------------
