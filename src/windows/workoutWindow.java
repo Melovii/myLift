@@ -129,9 +129,11 @@ public class workoutWindow extends JFrame {
                     if ((i.get()) % 2 == 0) {
                         startB.setText("Start");
                         int rest = dataManipulator.restTime[i.get() - 1];
-
+                        startTimer();
                     } else {
                         startB.setText("Rest");
+                        restL.setVisible(false);
+                        stopTimer();
                     }
 
                     currentExL.setVisible(true);
@@ -149,7 +151,6 @@ public class workoutWindow extends JFrame {
 
                     restL.setVisible(true);
                     timeLeft = dataManipulator.restTime[i.get()-1];
-                    startTimer();
                 }
         );
         // --------------------------------
