@@ -86,7 +86,6 @@ public class mainWindow extends JFrame
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("myLift");
-
         this.setVisible(true);
         // --------------------------------------
     }
