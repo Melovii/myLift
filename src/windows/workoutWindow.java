@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.TimerTask;
 
 import data.*;
 
@@ -173,7 +172,7 @@ public class workoutWindow extends JFrame {
                         startB.setVisible(false);
                         restB.setVisible(true);
                     } catch (ArrayIndexOutOfBoundsException ex) {
-                        System.out.println("ERROR: Array Index Out of Bounds");;
+                        System.out.println("ERROR: Array Index Out of Bounds");
                         dispose();
                         JOptionPane.showMessageDialog(null, "You finished your workout!");
                     }
@@ -241,11 +240,9 @@ public class workoutWindow extends JFrame {
         timer.start();
     }
 
+    // TODO: check if necessary
     public void stopTimer()
     {
         timer.stop();
     }
 }
-
-
-// TODO: change line datamanpulator to take variable "index"

@@ -6,13 +6,10 @@ import data.workout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static java.lang.Integer.parseInt;
-
 public class addWorkoutWindow extends JFrame {
-    JButton delExerciseB;
+    JButton delExerciseB; // TODO: check if necessary
     JButton addExerciseB, saveWorkoutB, cancelWorkoutB;
     JLabel workoutNameL, exerciseNameL, noSetsL, noRepsL, noRestL;
     JTextField workoutNameTF, exerciseNameTF, noSetsTF, noRepsTF, noRestTF;
@@ -21,8 +18,6 @@ public class addWorkoutWindow extends JFrame {
     JTextField[] noRepsTFi = new JTextField[10];
     JTextField[] noRestTFi = new JTextField[10];
     dataManipulation dataManipulator = new dataManipulation();
-
-    ArrayList<Integer> newExercises = new ArrayList<Integer>();
 
     int bY = 200;
 

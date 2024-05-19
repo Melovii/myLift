@@ -13,7 +13,7 @@ public class workout {
         this.exercises = new ArrayList<exercise>();
     }
 }
-
+// TODO: check if getters are necessary
 //public String getWorkoutName() {
 //    return workoutName;
 //}

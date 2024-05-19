@@ -53,9 +53,7 @@ public class mainWindow extends JFrame
 
         // ---  ---  BUTTON ACTIONS  ---  ---
         infoB.addActionListener(
-                (e) -> {
-                    new infoWindow();
-                }
+                (e) -> new infoWindow()
         );
 
         addWorkoutB.addActionListener(

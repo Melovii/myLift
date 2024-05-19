@@ -153,11 +153,10 @@ public class dataManipulation
         File file;
         do {
             fileName = "workouts_" + i + ".txt";
-            File fileT = new File(fileName);
             file = new File(fileName);
             noOfWorkouts++;
             i++;
-        } while (file.exists() == true);
+        } while (file.exists());
         return noOfWorkouts-1;
     }
 
