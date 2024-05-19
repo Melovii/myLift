@@ -63,6 +63,8 @@ public class viewWorkoutsWindow extends JFrame
                 (e) -> {
                     // code here
                     dataManipulator.deleteFiles();
+                    dispose();
+                    new mainWindow();
                 }
         );
 
