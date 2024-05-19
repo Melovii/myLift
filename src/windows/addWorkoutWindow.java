@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.lang.Integer.parseInt;
 
 public class addWorkoutWindow extends JFrame {
+    JButton delExerciseB;
     JButton addExerciseB, saveWorkoutB, cancelWorkoutB;
     JLabel workoutNameL, exerciseNameL, noSetsL, noRepsL, noRestL;
     JTextField workoutNameTF, exerciseNameTF, noSetsTF, noRepsTF, noRestTF;
@@ -19,6 +20,7 @@ public class addWorkoutWindow extends JFrame {
     JTextField[] noSetsTFi = new JTextField[10];
     JTextField[] noRepsTFi = new JTextField[10];
     JTextField[] noRestTFi = new JTextField[10];
+    dataManipulation dataManipulator = new dataManipulation();
 
     ArrayList<Integer> newExercises = new ArrayList<Integer>();
 
@@ -87,27 +89,38 @@ public class addWorkoutWindow extends JFrame {
         noRestTF.setFont(new Font("Calibri", Font.PLAIN, 18));
         this.add(noRestTF);
         // ------------------------------------
-
-
+        
+        
+        int excButtonWidth = 180;
 
         // ---  ---  BUTTON PROPERTIES  ---  ---
         addExerciseB = new JButton("Add Exercise");
         addExerciseB.setFont(new Font("Calibri", Font.BOLD, 21));
-        addExerciseB.setBounds(160, bY, 180, 40);
+        addExerciseB.setBounds(160, bY, excButtonWidth, 40);
         addExerciseB.setFocusable(false);
+        addExerciseB.setBackground(Color.WHITE);
         this.add(addExerciseB);
 
         saveWorkoutB = new JButton("Save");
         saveWorkoutB.setFont(new Font("Calibri", Font.BOLD, 21));
         saveWorkoutB.setBounds(20, bY, 100, 40);
         saveWorkoutB.setFocusable(false);
+        saveWorkoutB.setBackground(Color.WHITE);
         this.add(saveWorkoutB);
 
         cancelWorkoutB = new JButton("Cancel");
         cancelWorkoutB.setFont(new Font("Calibri", Font.BOLD, 21));
         cancelWorkoutB.setBounds(380, bY, 100, 40);
         cancelWorkoutB.setFocusable(false);
+        cancelWorkoutB.setBackground(Color.WHITE);
         this.add(cancelWorkoutB);
+
+        delExerciseB = new JButton("Delete Exercise");
+        delExerciseB.setFont(new Font("Calibri", Font.BOLD, 21));
+        delExerciseB.setBounds(280, bY, excButtonWidth, 40);
+        delExerciseB.setFocusable(false);
+        delExerciseB.setBackground(Color.WHITE);
+//        this.add(delExerciseB);
         // --------------------------------------
 
 
@@ -116,25 +129,43 @@ public class addWorkoutWindow extends JFrame {
 
         // ---  ---  BUTTON ACTIONS  ---  ---
         addExerciseB.addActionListener(
-
                 (e) -> {
                         try {
                             i.getAndIncrement();
                             addBoxRow(i.get());
                             this.setSize(this.getWidth(), this.getHeight() + 50);
                             bY += 50;
-                            addExerciseB.setBounds(160, bY, 180, 40);
+                            addExerciseB.setBounds(160, bY, excButtonWidth, 40);
                             saveWorkoutB.setBounds(20, bY, 100, 40);
                             cancelWorkoutB.setBounds(380, bY, 100, 40);
+                            delExerciseB.setBounds(280, bY, excButtonWidth, 40);
                             this.setLocationRelativeTo(null);
                         } catch (Exception excess) {
-                        addExerciseB.setEnabled(false);
+                            addExerciseB.setEnabled(false);
+                            System.out.println("Error adding exercise: " +excess.getMessage());
                         }
                 }
         );
 
+        delExerciseB.addActionListener(
+                (e) -> {
+                    try {
+                        i.getAndDecrement();
+                        removeBoxRow(i.get());
+                        this.setSize(this.getWidth(), this.getHeight() - 50);
+                        bY -= 50;
+                        addExerciseB.setBounds(160, bY, excButtonWidth, 40);
+                        saveWorkoutB.setBounds(20, bY, 100, 40);
+                        cancelWorkoutB.setBounds(380, bY, 100, 40);
+                        delExerciseB.setBounds(280, bY, excButtonWidth, 40);
+                        this.setLocationRelativeTo(null);
+                    } catch (Exception lack) {
+                        System.out.println("Error deleting exercise: " +lack.getMessage());
+                    }
+                }
+        );
 
-        dataManipulation dataManipulator = new dataManipulation();
+
         saveWorkoutB.addActionListener(
                 (e) -> {
                     try {
@@ -228,5 +259,26 @@ public class addWorkoutWindow extends JFrame {
         noRestTFi[i].setBounds(400, yPosition, 40, 25);
         noRestTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
         this.add(noRestTFi[i]);
+    }
+
+    public void removeBoxRow(int i)
+    {
+        if (exerciseNameTFi[i] != null) {
+            this.remove(exerciseNameTFi[i]);
+        }
+        if (noSetsTFi[i] != null) {
+            this.remove(noSetsTFi[i]);
+        }
+        if (noRepsTFi[i] != null) {
+            this.remove(noRepsTFi[i]);
+        }
+        if (noRestTFi[i] != null) {
+            this.remove(noRestTFi[i]);
+        }
+        // Set to null to avoid null pointer exceptions
+        exerciseNameTFi[i] = null;
+        noSetsTFi[i] = null;
+        noRepsTFi[i] = null;
+        noRestTFi[i] = null;
     }
 }

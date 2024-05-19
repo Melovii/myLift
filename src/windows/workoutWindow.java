@@ -36,11 +36,7 @@ public class workoutWindow extends JFrame {
     workoutWindow(int index) {
 
         dataManipulation dataManipulator = new dataManipulation(index);
-        dataManipulator.loadData(2); // TODO: INPUT INDEX FROM USER
-
-
-        this.setLayout(null);
-
+        dataManipulator.loadData(index);
 
         // --- --- PANEL PROPERTIES --- ---
         currentExP = new JPanel(new BorderLayout());
@@ -123,6 +119,7 @@ public class workoutWindow extends JFrame {
         startB.setFont(new Font("Calibri", Font.BOLD, 21));
         startB.setBounds(275, 225 - 16, 250, 150);
         startB.setFocusable(false);
+        startB.setBackground(Color.WHITE);
         this.add(startB);
 
         setB = new JButton("Start set");
@@ -130,6 +127,7 @@ public class workoutWindow extends JFrame {
         setB.setBounds(275, 225 - 16, 250, 150);
         setB.setFocusable(false);
         setB.setVisible(false);
+        setB.setBackground(Color.WHITE);
         this.add(setB);
 
         restB = new JButton("Rest");
@@ -137,6 +135,7 @@ public class workoutWindow extends JFrame {
         restB.setBounds(275, 225 - 16, 250, 150);
         restB.setFocusable(false);
         restB.setVisible(false);
+        restB.setBackground(Color.WHITE);
         this.add(restB);
         // --------------------------------
 
@@ -174,7 +173,7 @@ public class workoutWindow extends JFrame {
                         startB.setVisible(false);
                         restB.setVisible(true);
                     } catch (ArrayIndexOutOfBoundsException ex) {
-                        System.out.println("brauh");;
+                        System.out.println("ERROR: Array Index Out of Bounds");;
                         dispose();
                         JOptionPane.showMessageDialog(null, "You finished your workout!");
                     }
@@ -212,6 +211,7 @@ public class workoutWindow extends JFrame {
 
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setSize(800, 600);
+        this.setLayout(null);
 
         this.getContentPane().setBackground(new Color(44, 43, 64));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
