@@ -27,21 +27,25 @@ public class mainWindow extends JFrame
         infoB.setFont(new Font("Times New Roman", Font.BOLD, 26));
         infoB.setBounds(20, 420, 44, 44);
         infoB.setFocusable(false);
+        infoB.setBackground(Color.WHITE);
         this.add(infoB);
 
         addWorkoutB = new JButton("Add Workout");
         addWorkoutB.setBounds(120, 140, 280, 60);
         addWorkoutB.setFocusable(false);
+        addWorkoutB.setBackground(Color.WHITE);
         this.add(addWorkoutB);
 
         workoutB = new JButton("Start Workout");
         workoutB.setBounds(120, 240, 280, 60);
         workoutB.setFocusable(false);
+        workoutB.setBackground(Color.WHITE);
         this.add(workoutB);
 
         viewWorkoutsB = new JButton("Workouts List");
         viewWorkoutsB.setBounds(120, 340, 280, 60);
         viewWorkoutsB.setFocusable(false);
+        viewWorkoutsB.setBackground(Color.WHITE);
         this.add(viewWorkoutsB);
         // -------------------------------------
 

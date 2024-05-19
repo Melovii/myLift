@@ -107,6 +107,16 @@ public class dataManipulation
             }
         }
 
+        private void resetIndex() {
+            try {
+                BufferedWriter bw = new BufferedWriter(new FileWriter(INDEX_FILE));
+                bw.write("1");
+                bw.close();
+            } catch (IOException e) {
+                System.out.println("Error resetting index: " +e.getMessage());
+            }
+        }
+
     public void loadData(int index)
     // method to load data from a specific file
     {
@@ -135,4 +145,37 @@ public class dataManipulation
             System.out.println("Error reading file: " + e.getMessage());
         }
     }
+
+    public int noOfFiles () {
+        int noOfWorkouts = 0;
+        int i = 1;
+        String fileName;
+        File file;
+        do {
+            fileName = "workouts_" + i + ".txt";
+            File fileT = new File(fileName);
+            file = new File(fileName);
+            noOfWorkouts++;
+            i++;
+        } while (file.exists() == true);
+        return noOfWorkouts-1;
+    }
+
+    public void deleteFiles() {
+        resetIndex();
+        int fileCount = noOfFiles();
+        String fileName;
+        File file;
+
+        for (int i=0; i <= fileCount; i++) {
+            fileName = "workouts_" + i + ".txt";
+            file = new File(fileName);
+            try {
+                file.delete();
+            } catch (Exception e) {
+                System.out.println("Error deleting file: " + e.getMessage());
+            }
+        }
+    }
+
 }
