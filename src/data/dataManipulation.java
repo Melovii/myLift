@@ -1,5 +1,6 @@
 package data;
 
+import javax.swing.*;
 import java.io.*;
 
 public class dataManipulation
@@ -175,6 +176,6 @@ public class dataManipulation
                 System.out.println("Error deleting file: " + e.getMessage());
             }
         }
+        JOptionPane.showMessageDialog(null, "Deleted all workouts successfully!");
     }
-
 }

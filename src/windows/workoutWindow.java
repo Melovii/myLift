@@ -14,6 +14,7 @@ public class workoutWindow extends JFrame {
     JLabel currentExL, nextExL, setsL, repsL, restL, elapsedTimeL, setsLeftL;
     JPanel currentExP, nextExP;
     int elapsed_timeE, hoursE, minutesE, secondsE, timeLeft;
+    sound sound;
 
     Timer elapsedTimer = new Timer(1000, new ActionListener() {
         @Override
@@ -36,6 +37,7 @@ public class workoutWindow extends JFrame {
 
         dataManipulation dataManipulator = new dataManipulation(index);
         dataManipulator.loadData(index);
+        sound = new sound();
 
         // --- --- PANEL PROPERTIES --- ---
         currentExP = new JPanel(new BorderLayout());
@@ -98,7 +100,7 @@ public class workoutWindow extends JFrame {
         restL = new JLabel();
         restL.setFont(new Font("Calibri", Font.BOLD, 25));
         restL.setForeground(new Color(230, 230, 230));
-        restL.setBounds(400, 100, 100, 100);
+        restL.setBounds(400, 100, 200, 100);
         restL.setVisible(false);
         this.add(restL);
 
@@ -173,16 +175,18 @@ public class workoutWindow extends JFrame {
                         restB.setVisible(true);
                     } catch (ArrayIndexOutOfBoundsException ex) {
                         System.out.println("ERROR: Array Index Out of Bounds");
-                        dispose();
-                        JOptionPane.showMessageDialog(null, "You finished your workout!");
+                        nextExL.setText("Next exercise: Done!");
+                        restL.setVisible(false);
+                        startB.setVisible(false);
+                        restB.setVisible(true);
                     }
                 }
         );
 
         setB.addActionListener(
                 (e) -> {
-                    int setsLeft = dataManipulator.numSets[i.get()-1] - j.getAndIncrement();
-                    setsLeftL.setText("Sets left: "+setsLeft);
+                    int setsLeft = dataManipulator.numSets[i.get() - 1] - j.getAndIncrement();
+                    setsLeftL.setText("Sets left: " + setsLeft);
                     setB.setVisible(false);
                     restB.setVisible(true);
                     restL.setVisible(false);
@@ -191,16 +195,21 @@ public class workoutWindow extends JFrame {
 
         restB.addActionListener(
                 (e) -> {
-                    timeLeft = dataManipulator.restTime[i.get() - 1];
-                    restL.setText(""+timeLeft);
-                    timeLeft--;
-                    startTimer();
-                    restL.setVisible(true);
-                    restB.setVisible(false);
-                    if(setsLeftL.getText().equals("Sets left: 1")) {
-                        startB.setVisible(true);
-                    } else {
-                        setB.setVisible(true);
+                    try {
+                        timeLeft = dataManipulator.restTime[i.get() - 1];
+                        restL.setText(""+timeLeft);
+                        timeLeft--;
+                        startTimer();
+                        restL.setVisible(true);
+                        restB.setVisible(false);
+                        if(setsLeftL.getText().equals("Sets left: 1")) {
+                            startB.setVisible(true);
+                        } else {
+                            setB.setVisible(true);
+                        }
+                    } catch (ArrayIndexOutOfBoundsException ex){
+                        JOptionPane.showMessageDialog(null, "You finished your workout!");
+                        System.exit(0);
                     }
                 }
         );
@@ -222,13 +231,15 @@ public class workoutWindow extends JFrame {
 
     }
 
+    // ---  ---  Rest Timer  ---  ---
     Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             restL.setText("" + timeLeft);
             if (timeLeft == 0) {
                 timer.stop();
-                restL.setText("TIMER ENDED");
+                restL.setText("Rest Done!");
+                playSFX(0);
             }
             timeLeft -= 1;
         }
@@ -239,10 +250,11 @@ public class workoutWindow extends JFrame {
     {
         timer.start();
     }
+    // --------------------------------
 
-    // TODO: check if necessary
-    public void stopTimer()
-    {
-        timer.stop();
+    // ---  ---  SFX  ---  ---
+    public void playSFX(int i) {
+        sound.setFile(i);
+        sound.play();
     }
 }
