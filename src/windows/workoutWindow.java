@@ -173,16 +173,18 @@ public class workoutWindow extends JFrame {
                         restB.setVisible(true);
                     } catch (ArrayIndexOutOfBoundsException ex) {
                         System.out.println("ERROR: Array Index Out of Bounds");
-                        dispose();
-                        JOptionPane.showMessageDialog(null, "You finished your workout!");
+                        nextExL.setText("Next exercise: Done!");
+                        restL.setVisible(false);
+                        startB.setVisible(false);
+                        restB.setVisible(true);
                     }
                 }
         );
 
         setB.addActionListener(
                 (e) -> {
-                    int setsLeft = dataManipulator.numSets[i.get()-1] - j.getAndIncrement();
-                    setsLeftL.setText("Sets left: "+setsLeft);
+                    int setsLeft = dataManipulator.numSets[i.get() - 1] - j.getAndIncrement();
+                    setsLeftL.setText("Sets left: " + setsLeft);
                     setB.setVisible(false);
                     restB.setVisible(true);
                     restL.setVisible(false);
@@ -191,16 +193,21 @@ public class workoutWindow extends JFrame {
 
         restB.addActionListener(
                 (e) -> {
-                    timeLeft = dataManipulator.restTime[i.get() - 1];
-                    restL.setText(""+timeLeft);
-                    timeLeft--;
-                    startTimer();
-                    restL.setVisible(true);
-                    restB.setVisible(false);
-                    if(setsLeftL.getText().equals("Sets left: 1")) {
-                        startB.setVisible(true);
-                    } else {
-                        setB.setVisible(true);
+                    try {
+                        timeLeft = dataManipulator.restTime[i.get() - 1];
+                        restL.setText(""+timeLeft);
+                        timeLeft--;
+                        startTimer();
+                        restL.setVisible(true);
+                        restB.setVisible(false);
+                        if(setsLeftL.getText().equals("Sets left: 1")) {
+                            startB.setVisible(true);
+                        } else {
+                            setB.setVisible(true);
+                        }
+                    } catch (ArrayIndexOutOfBoundsException ex){
+                        JOptionPane.showMessageDialog(null, "You finished your workout!");
+                        System.exit(0);
                     }
                 }
         );
