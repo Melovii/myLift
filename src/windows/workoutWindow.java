@@ -85,7 +85,7 @@ public class workoutWindow extends JFrame {
         setsLeftL.setFont(new Font("Calibri", Font.BOLD, 25));
         setsLeftL.setForeground(new Color(230, 230, 230));
         setsLeftL.setBounds(100, 200, 300, 100);
-        setsLeftL.setVisible(true);
+        setsLeftL.setVisible(false);
         this.add(setsLeftL);
 
         repsL = new JLabel();
@@ -109,7 +109,7 @@ public class workoutWindow extends JFrame {
         elapsedTimeL.setFont(new Font("Calibri", Font.BOLD, 25));
         elapsedTimeL.setForeground(new Color(230, 230, 230));
         elapsedTimeL.setBounds(25, 0, 100, 100);
-        elapsedTimer.start();
+        elapsedTimeL.setVisible(false);
         this.add(elapsedTimeL);
         // --------------------------------
 
@@ -146,8 +146,14 @@ public class workoutWindow extends JFrame {
         // TODO: make a breakpoint for when next and current exercise are equal (in terms of index)
         AtomicInteger i = new AtomicInteger();
         AtomicInteger j = new AtomicInteger();
+        AtomicInteger elapsedTimeFlag = new AtomicInteger();
         startB.addActionListener(
                 (e) -> {
+                    if(elapsedTimeFlag.get() == 0) {
+                        elapsedTimer.start();
+                        elapsedTimeL.setVisible(true);
+                        elapsedTimeFlag.incrementAndGet();
+                    }
 
                     try {
                         i.getAndIncrement();
@@ -208,7 +214,7 @@ public class workoutWindow extends JFrame {
                             setB.setVisible(true);
                         }
                     } catch (ArrayIndexOutOfBoundsException ex){
-                        JOptionPane.showMessageDialog(null, "You finished your workout!");
+                        JOptionPane.showMessageDialog(null, "You finished your workout in "+elapsedTimeL.getText()+"!");
                         System.exit(0);
                     }
                 }
@@ -251,6 +257,7 @@ public class workoutWindow extends JFrame {
         timer.start();
     }
     // --------------------------------
+
 
     // ---  ---  SFX  ---  ---
     public void playSFX(int i) {
