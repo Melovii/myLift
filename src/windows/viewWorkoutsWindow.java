@@ -74,11 +74,9 @@ public class viewWorkoutsWindow extends JFrame
         );
 
 
-
         workoutNameP = new JPanel[6];
         workoutNameL = new JLabel[6];
         dataManipulator.loadWorkoutNames();
-        System.out.println(dataManipulator.workoutNames[0]);
         int height = 50;
         int numWorkouts = dataManipulator.noOfFiles();
 
@@ -119,7 +117,7 @@ public class viewWorkoutsWindow extends JFrame
             workoutNameP[i].setBounds(100, height, 300, 50);
 
             workoutNameL[i] = new JLabel();
-            workoutNameL[i].setText(""+dataManipulator.workoutNames[i]);
+            workoutNameL[i].setText("Name: "+dataManipulator.workoutNames[i]+"    Number of exercises: "+dataManipulator.noOfExercises(i+1));
 
             workoutNameP[i].add(workoutNameL[i]);
             this.add(workoutNameP[i]);
