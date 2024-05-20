@@ -18,7 +18,7 @@ public class dataManipulation
 
         // getting numberoflines of the workout
         try {
-            String fileName = "workouts_" + index + ".txt";
+            String fileName = "src/resources/workouts/workout_" + index + ".txt";
             BufferedReader br1 = new BufferedReader(new FileReader(fileName));
 
             while(br1.readLine() != null) {
@@ -50,7 +50,7 @@ public class dataManipulation
         {
             try {
                 int index = getNextIndex();
-                String fileName = "workouts_" + index + ".txt";
+                String fileName = "src/resources/workouts/workout_" + index + ".txt";
                 BufferedWriter bw = new BufferedWriter(new FileWriter(fileName, true));
 
                 bw.write(newWorkout.workoutName);
@@ -124,7 +124,7 @@ public class dataManipulation
         System.out.println("Value of noOfLines "+(noOfLines)/4);
 
         try {
-            String fileName = "workouts_" + index + ".txt";
+            String fileName = "src/resources/workouts/workout_" + index + ".txt";
             BufferedReader br2 = new BufferedReader(new FileReader(fileName));
 
             String workoutName = br2.readLine();
@@ -153,7 +153,7 @@ public class dataManipulation
         String fileName;
         File file;
         do {
-            fileName = "workouts_" + i + ".txt";
+            fileName = "src/resources/workouts/workout_" + i + ".txt";
             file = new File(fileName);
             noOfWorkouts++;
             i++;
@@ -168,7 +168,7 @@ public class dataManipulation
         File file;
 
         for (int i=0; i <= fileCount; i++) {
-            fileName = "workouts_" + i + ".txt";
+            fileName = "src/resources/workouts/workout_" + i + ".txt";
             file = new File(fileName);
             try {
                 file.delete();
