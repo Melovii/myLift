@@ -152,6 +152,7 @@ public class workoutWindow extends JFrame {
                     if(elapsedTimeFlag.get() == 0) {
                         elapsedTimer.start();
                         elapsedTimeL.setVisible(true);
+                        setsLeftL.setVisible(true);
                         elapsedTimeFlag.incrementAndGet();
                     }
 
