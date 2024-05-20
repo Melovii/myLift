@@ -106,8 +106,8 @@ public class viewWorkoutsWindow extends JFrame
 
             infoB[i].addActionListener(
                     (e) -> {
-                        new workoutInfoWindow(); // TODO: add index for parameter
-                        System.out.println(numWorkouts);
+                        new workoutInfoWindow(index); // TODO: add index for parameter
+                        System.out.println(index);
                     }
             );
 
