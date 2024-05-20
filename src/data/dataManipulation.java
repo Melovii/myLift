@@ -31,10 +31,10 @@ public class dataManipulation {
         }
 
         // no clue why we dont need the -2 anymore but it works
-        this.exerciseName = new String[(noOfLines) / 4];
-        this.numSets = new int[(noOfLines) / 4];
-        this.numReps = new int[(noOfLines) / 4];
-        this.restTime = new int[(noOfLines) / 4];
+        this.exerciseName = new String[(noOfExercises(index))];
+        this.numSets = new int[(noOfExercises(index))];
+        this.numReps = new int[(noOfExercises(index))];
+        this.restTime = new int[(noOfExercises(index))];
         this.workoutNames = new String[noOfFiles()];
 
     }
@@ -120,7 +120,7 @@ public class dataManipulation {
     public void loadData(int index)
     // method to load data from a specific file
     {
-        System.out.println("Value of noOfLines " + (noOfLines) / 4);
+        System.out.println("Value of noOfLines " + noOfLines);
 
         try {
             String fileName = "src/resources/workouts/workout_" + index + ".txt";
@@ -129,7 +129,7 @@ public class dataManipulation {
             String workoutName = br2.readLine();
             System.out.println(workoutName);
 
-            for (int k = 0; k < (noOfLines) / 4; k++) {
+            for (int k = 0; k < noOfExercises(index); k++) {
                 exerciseName[k] = br2.readLine();
                 System.out.println(exerciseName[k]);
                 numSets[k] = Integer.parseInt(br2.readLine());
@@ -190,5 +190,22 @@ public class dataManipulation {
                 e.printStackTrace();  // Print the stack trace for better debugging
             }
         }
+    }
+
+    public int noOfExercises(int index) {
+        noOfLines=0;
+        try {
+            String fileName = "src/resources/workouts/workout_" + index + ".txt";
+            BufferedReader br1 = new BufferedReader(new FileReader(fileName));
+
+            while (br1.readLine() != null) {
+                noOfLines++;
+            }
+            br1.close();
+
+        } catch (Exception e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+        return noOfLines/4;
     }
 }
