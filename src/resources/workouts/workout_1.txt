@@ -1,17 +1,17 @@
-example
-ex1
+Chest Day
+bench press
 3
 12
 5
-ex2
+incline bench
 5
 10
 10
-ex3e
+push up
 2
 8
 10
-ex4
+decline bench
 5
 4
 5

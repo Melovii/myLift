@@ -4,6 +4,9 @@ import data.dataManipulation;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class viewWorkoutsWindow extends JFrame
 {
@@ -11,10 +14,12 @@ public class viewWorkoutsWindow extends JFrame
     JButton[] infoB = new JButton[10];
     JButton[] startB = new JButton[10];
     JPanel[] workoutNameP;
-    dataManipulation dataManipulator = new dataManipulation();
+    JLabel[] workoutNameL;
 
     viewWorkoutsWindow()
     {
+
+        dataManipulation dataManipulator = new dataManipulation();
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setLayout(null);
         this.setSize(520, 600);
@@ -71,6 +76,9 @@ public class viewWorkoutsWindow extends JFrame
 
 
         workoutNameP = new JPanel[6];
+        workoutNameL = new JLabel[6];
+        dataManipulator.loadWorkoutNames();
+        System.out.println(dataManipulator.workoutNames[0]);
         int height = 50;
         int numWorkouts = dataManipulator.noOfFiles();
 
@@ -109,6 +117,11 @@ public class viewWorkoutsWindow extends JFrame
             workoutNameP[i] = new JPanel();
             workoutNameP[i].setBorder(BorderFactory.createLineBorder(new Color(27, 127, 222), 4));
             workoutNameP[i].setBounds(100, height, 300, 50);
+
+            workoutNameL[i] = new JLabel();
+            workoutNameL[i].setText(""+dataManipulator.workoutNames[i]);
+
+            workoutNameP[i].add(workoutNameL[i]);
             this.add(workoutNameP[i]);
 
             height += 75;
