@@ -1,4 +1,18 @@
-The app works in a very spedcific way...
-The rest time mentioned in this app is basically the amount of seconds that you want to rest in-between each SET.
-After you add a workout you get to access them from the workouts list.
-Have fun! (:
+Plan Your Workouts:
+- Create custom routines with exercises, sets, reps, and rest time between
+each set.
+
+Track Your Progress:
+- See all your saved workouts in one list for easy access.
+
+Guided Workouts:
+- Start your workout plan and get timed rest prompts.
+
+Effortless Efficiency: Maximize your gym time!
+- Now you can focus on your form, not your phone. This app handles the
+rest timing, preventing you from distractions in your workout.
+
+* Note: Rest refers to the seconds you rest between each set
+(might want to inlude such information with mouse on hover method)
+
+copyright: mel n vrosh©️
