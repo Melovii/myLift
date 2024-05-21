@@ -39,7 +39,7 @@ public class dataManipulation {
 
     }
 
-    private static final String INDEX_FILE = "index.txt";
+    private static final String INDEX_FILE = "src/resources/index.txt";
 
 
     // VVVV constructor without a parameter, its needed apperantly
@@ -118,7 +118,7 @@ public class dataManipulation {
     }
 
     public void loadData(int index)
-    // method to load data from a specific file
+    // method to load data from a specific workout
     {
         System.out.println("Value of noOfLines " + noOfLines);
 
@@ -145,7 +145,7 @@ public class dataManipulation {
         }
     }
 
-    public int noOfFiles() {
+    public int noOfFiles() {        //in other words, number of workouts
         int noOfWorkouts = 0;
         int i = 1;
         String fileName;
