@@ -157,12 +157,16 @@ public class workoutWindow extends JFrame {
                     }
                     try {
                         i.getAndIncrement();
+                        int indexo = i.get() + 1;
+
+                        int sets = dataManipulator.numSets[i.get() - 1];
+                        int numOfReps = dataManipulator.numReps[i.get() - 1];
+                        String nextExercise = dataManipulator.exerciseName[indexo - 1];
 
                         currentExL.setVisible(true);
                         currentExL.setText("Current Exercise: " + dataManipulator.exerciseName[i.get() - 1]);
 
                         setsL.setVisible(true);
-                        int sets = dataManipulator.numSets[i.get() - 1];
                         setsL.setText("Sets: " + sets);
 
                         j.set(0);
@@ -170,11 +174,10 @@ public class workoutWindow extends JFrame {
                         setsLeftL.setText("Sets left: "+sets);
 
                         repsL.setVisible(true);
-                        repsL.setText("Reps: " + dataManipulator.numReps[i.get() - 1]);
+                        repsL.setText("Reps: " + numOfReps);
 
                         nextExL.setVisible(true);
-                        int indexo = i.get() + 1;
-                        nextExL.setText("Next Exercise: " + dataManipulator.exerciseName[indexo - 1]);
+                        nextExL.setText("Next Exercise: " + nextExercise);
 
                         restL.setVisible(false);
                         startB.setVisible(false);
@@ -192,6 +195,7 @@ public class workoutWindow extends JFrame {
         setB.addActionListener(
                 (e) -> {
                     int setsLeft = dataManipulator.numSets[i.get() - 1] - j.getAndIncrement();
+
                     setsLeftL.setText("Sets left: " + setsLeft);
                     setB.setVisible(false);
                     restB.setVisible(true);
@@ -213,7 +217,7 @@ public class workoutWindow extends JFrame {
                         } else {
                             setB.setVisible(true);
                         }
-                    } catch (ArrayIndexOutOfBoundsException ex){
+                    } catch (ArrayIndexOutOfBoundsException ex) {
                         JOptionPane.showMessageDialog(null, "You finished your workout in "+elapsedTimeL.getText()+"!");
                         System.exit(0);
                     }

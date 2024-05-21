@@ -4,9 +4,6 @@ import data.dataManipulation;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 
 public class viewWorkoutsWindow extends JFrame
 {
@@ -81,6 +78,10 @@ public class viewWorkoutsWindow extends JFrame
         int numWorkouts = dataManipulator.noOfFiles();
 
         for (int i=0; i < numWorkouts; i++) {
+
+            String workoutName = dataManipulator.workoutNames[i];
+            int noOfExercises = dataManipulator.noOfExercises(i+1);
+
             startB[i] = new JButton("▶");
             startB[i].setFocusable(false);
             startB[i].setBackground(Color.WHITE);
@@ -117,7 +118,7 @@ public class viewWorkoutsWindow extends JFrame
             workoutNameP[i].setBounds(100, height, 300, 50);
 
             workoutNameL[i] = new JLabel();
-            workoutNameL[i].setText("Name: "+dataManipulator.workoutNames[i]+"    Number of exercises: "+dataManipulator.noOfExercises(i+1));
+            workoutNameL[i].setText("Name: " + workoutName + "    Number of exercises: " + noOfExercises);
 
             workoutNameP[i].add(workoutNameL[i]);
             this.add(workoutNameP[i]);

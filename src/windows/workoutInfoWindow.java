@@ -24,9 +24,13 @@ public class workoutInfoWindow extends JFrame {
         dataManipulator.loadData(index);
         dataManipulator.loadWorkoutNames();
 
+        // --- --- VARIABLES --- ---
+        String workoutName = dataManipulator.workoutNames[index-1];
+        // -------------------------
+
         // --- --- LABEL PROPERTIES --- ---
         workoutNameL = new JLabel();
-        workoutNameL.setText("Workout Name: "+dataManipulator.workoutNames[index-1]);
+        workoutNameL.setText("Workout Name: " + workoutName);
         workoutNameL.setFont(new Font("Calibri", Font.BOLD, 21));
         workoutNameL.setForeground(new Color(230, 230, 230));
         workoutNameL.setBounds(70, 0, 400, 100);
