@@ -100,7 +100,7 @@ public class workoutInfoWindow extends JFrame {
         this.setSize(520, 300);
 
         this.getContentPane().setBackground(new Color(44, 43, 64));
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Add Workout");
