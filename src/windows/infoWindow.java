@@ -13,7 +13,7 @@ public class infoWindow extends JFrame
     {
         // --- --- WINDOW PROPERTIES --- ---
         this.setLayout(new BorderLayout());
-        this.setSize(780, 450);
+        this.setSize(780, 580);
 
         this.getContentPane().setBackground(new Color(44, 43, 64));
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
