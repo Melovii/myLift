@@ -1,0 +1,4 @@
+The app works in a very spedcific way...
+The rest time mentioned in this app is basically the amount of seconds that you want to rest in-between each SET.
+After you add a workout you get to access them from the workouts list.
+Have fun! (:
