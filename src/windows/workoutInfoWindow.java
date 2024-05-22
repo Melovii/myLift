@@ -14,6 +14,14 @@ public class workoutInfoWindow extends JFrame {
     JLabel[] noRestMLi = new JLabel[10];
     dataManipulation dataManipulator;
 
+    Color BackgroundC = new Color(0x2b3439);
+    Color LabelC = new Color(0x35abff);
+    Color WhiteC = new Color(0xfbffff);
+    Color ButtonC = new Color(0x374049);
+    Color CancelC = new Color(0xe85d69);
+    Color ShadowC = new Color(0x191C1D);
+    Color TERTIARY = new Color(0x3d464b);
+
     workoutInfoWindow(int index)
     {
         dataManipulator = new dataManipulation(index);
@@ -96,7 +104,7 @@ public class workoutInfoWindow extends JFrame {
         this.setLayout(null);
         this.setSize(520, 300);
 
-        this.getContentPane().setBackground(new Color(44, 43, 64));
+        this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

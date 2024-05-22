@@ -1,34 +1,13 @@
-Chest Day
-bench press
+push day
+push up
 3
 12
+90
+bench press
 5
-incline bench
 5
-10
-10
-push up
-2
-8
-10
-decline bench
-5
-4
-5
-testings
-ex1
+240
+bodyweight dip
 3
-3
-30
-ex2
-3
-3
-30
-ex3
-3
-3
-30
-ex4
-3
-3
-30
+20
+120
