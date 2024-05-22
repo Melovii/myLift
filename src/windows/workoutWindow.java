@@ -16,6 +16,11 @@ public class workoutWindow extends JFrame {
     int elapsed_timeE, hoursE, minutesE, secondsE, timeLeft;
     sound sound;
 
+    Color BackgroundC = new Color(0xFF2B2D30);
+    Color ButtonC = new Color(0x363A3D);
+    Color LabelC = new Color(0x73fbfd);
+        Color WhiteC = new Color(0xfbffff);
+
     Timer elapsedTimer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -41,12 +46,12 @@ public class workoutWindow extends JFrame {
 
         // --- --- PANEL PROPERTIES --- ---
         currentExP = new JPanel(new BorderLayout());
-        currentExP.setBounds(0, 30, 800, 50);
+        currentExP.setBounds(100, 25, 550, 50);
         currentExP.setOpaque(false);
         this.add(currentExP);
 
         nextExP = new JPanel(new BorderLayout());
-        nextExP.setBounds(0, 490, 800, 50);
+        nextExP.setBounds(100, 445, 550, 50);
         nextExP.setOpaque(false);
         this.add(nextExP);
         // --------------------------------
@@ -56,8 +61,8 @@ public class workoutWindow extends JFrame {
         // --- --- LABEL PROPERTIES --- ---
         currentExL = new JLabel();
         currentExL.setText("Current Exercise:");
-        currentExL.setFont(new Font("Calibri", Font.BOLD, 35));
-        currentExL.setForeground(new Color(230, 230, 230));
+        currentExL.setFont(new Font("Gadugi", Font.BOLD, 30));
+        currentExL.setForeground(WhiteC);
         currentExL.setHorizontalAlignment(SwingConstants.CENTER);
         currentExL.setVerticalAlignment(SwingConstants.TOP);
         currentExL.setVisible(false);
@@ -65,8 +70,8 @@ public class workoutWindow extends JFrame {
 
         nextExL = new JLabel();
         nextExL.setText("Next Exercise:");
-        nextExL.setFont(new Font("Calibri", Font.BOLD, 35));
-        nextExL.setForeground(new Color(230, 230, 230));
+        nextExL.setFont(new Font("Gadugi", Font.BOLD, 30));
+        nextExL.setForeground(WhiteC);
         nextExL.setHorizontalAlignment(SwingConstants.CENTER);
         nextExL.setVerticalAlignment(SwingConstants.TOP);
         nextExL.setVisible(false);
@@ -74,33 +79,33 @@ public class workoutWindow extends JFrame {
 
         setsLeftL = new JLabel();
         setsLeftL.setText("Sets left: ");
-        setsLeftL.setFont(new Font("Calibri", Font.BOLD, 25));
-        setsLeftL.setForeground(new Color(230, 230, 230));
-        setsLeftL.setBounds(100, 200, 300, 100);
+        setsLeftL.setFont(new Font("Gadugi", Font.BOLD, 22));
+        setsLeftL.setForeground(WhiteC);
+        setsLeftL.setBounds(383, 100, 200, 100);
         setsLeftL.setVisible(false);
         this.add(setsLeftL);
 
         repsL = new JLabel();
         repsL.setText("Reps: ");
-        repsL.setFont(new Font("Calibri", Font.BOLD, 25));
-        repsL.setForeground(new Color(230, 230, 230));
-        repsL.setBounds(300, 100, 100, 100);
+        repsL.setFont(new Font("Gadugi", Font.BOLD, 22));
+        repsL.setForeground(WhiteC);
+        repsL.setBounds(250, 100, 100, 100);
         repsL.setVisible(false);
         this.add(repsL);
 
 
         restL = new JLabel();
-        restL.setFont(new Font("Calibri", Font.BOLD, 25));
-        restL.setForeground(new Color(230, 230, 230));
-        restL.setBounds(400, 100, 200, 100);
+        restL.setFont(new Font("Gadugi", Font.BOLD, 22));
+        restL.setForeground(WhiteC);
+        restL.setBounds(317, 310, 250, 100);
         restL.setVisible(false);
         this.add(restL);
 
         elapsedTimeL = new JLabel();
         elapsedTimeL.setText("00:00:00");
-        elapsedTimeL.setFont(new Font("Calibri", Font.BOLD, 25));
-        elapsedTimeL.setForeground(new Color(230, 230, 230));
-        elapsedTimeL.setBounds(25, 0, 100, 100);
+        elapsedTimeL.setFont(new Font("Gadugi", Font.BOLD, 22));
+        elapsedTimeL.setForeground(WhiteC);
+        elapsedTimeL.setBounds(8, 0, 100, 40);
         elapsedTimeL.setVisible(false);
         this.add(elapsedTimeL);
         // --------------------------------
@@ -109,26 +114,29 @@ public class workoutWindow extends JFrame {
 
         // --- --- BUTTON PROPERTIES --- ---
         startB = new JButton("Start");
-        startB.setFont(new Font("Calibri", Font.BOLD, 21));
-        startB.setBounds(275, 225 - 16, 250, 150);
+        startB.setFont(new Font("Gadugi", Font.BOLD, 21));
+        startB.setBounds(250, 200 - 16, 250, 150);
         startB.setFocusable(false);
-        startB.setBackground(Color.WHITE);
+        startB.setBackground(ButtonC);
+        startB.setForeground(LabelC);
         this.add(startB);
 
-        setB = new JButton("Start set");
-        setB.setFont(new Font("Calibri", Font.BOLD, 21));
-        setB.setBounds(275, 225 - 16, 250, 150);
+        setB = new JButton("Start Set");
+        setB.setFont(new Font("Gadugi", Font.BOLD, 21));
+        setB.setBounds(250, 200 - 16, 250, 150);
         setB.setFocusable(false);
         setB.setVisible(false);
-        setB.setBackground(Color.WHITE);
+        setB.setBackground(ButtonC);
+        setB.setForeground(LabelC);
         this.add(setB);
 
         restB = new JButton("Rest");
-        restB.setFont(new Font("Calibri", Font.BOLD, 21));
-        restB.setBounds(275, 225 - 16, 250, 150);
+        restB.setFont(new Font("Gadugi", Font.BOLD, 21));
+        restB.setBounds(250, 200 - 16, 250, 150);
         restB.setFocusable(false);
         restB.setVisible(false);
-        restB.setBackground(Color.WHITE);
+        restB.setBackground(ButtonC);
+        restB.setForeground(LabelC);
         this.add(restB);
         // --------------------------------
 
@@ -157,7 +165,7 @@ public class workoutWindow extends JFrame {
                         String nextExercise = dataManipulator.exerciseName[indexo - 1];
 
                         currentExL.setVisible(true);
-                        currentExL.setText("Current: " + dataManipulator.exerciseName[i.get() - 1] + " "+sets+"x");
+                        currentExL.setText("Current: " + dataManipulator.exerciseName[i.get() - 1]);
 
                         j.set(0);
                         sets += j.getAndIncrement();
@@ -210,6 +218,7 @@ public class workoutWindow extends JFrame {
                             setB.setVisible(true);
                         }
                     } catch (ArrayIndexOutOfBoundsException ex) {
+                        elapsedTimer.stop();
                         JOptionPane.showMessageDialog(null, "You finished your workout in "+elapsedTimeL.getText()+"!");
                         System.exit(0);
                     }
@@ -220,10 +229,10 @@ public class workoutWindow extends JFrame {
 
 
         // ---  ---  WINDOW PROPERTIES  ---  ---
-        this.setSize(800, 600);
+        this.setSize(750, 550);
         this.setLayout(null);
 
-        this.getContentPane().setBackground(new Color(44, 43, 64));
+        this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -242,8 +251,8 @@ public class workoutWindow extends JFrame {
             if (startB.getText().equals("0") || setB.getText().equals("0")) {
                 timer.stop();
                 restL.setText("Rest Done!");
-                setB.setText("Start set");
-                startB.setText("Start");
+                setB.setText("Start Set");
+                startB.setText("Start Next Exercise");
                 playSFX(0);
             }
             timeLeft -= 1;

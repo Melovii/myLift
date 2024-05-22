@@ -9,10 +9,10 @@ public class mainWindow extends JFrame
     JButton addWorkoutB, workoutB, viewWorkoutsB, infoB; // let it be small and closable
     JLabel mainTitle, mainTitleShadow;
 
-    Color BackgroundC = new Color(0x2b3439);
-    Color LabelC = new Color(0x35abff);
+    Color BackgroundC = new Color(0xFF2B2D30);
+    Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
-    Color ButtonC = new Color(0x374049);
+    Color ButtonC = new Color(0x363A3D);
     Color CancelC = new Color(0xe85d69);
     Color ShadowC = new Color(0x191C1D);
     Color TERTIARY = new Color(0x3d464b);
@@ -78,7 +78,7 @@ public class mainWindow extends JFrame
                 (e) -> {
                     dispose();
 
-                        new addWorkoutWindow();
+                    new addWorkoutWindow();
                 }
         );
 
