@@ -19,6 +19,14 @@ public class addWorkoutWindow extends JFrame {
     JTextField[] noRestTFi = new JTextField[10];
     dataManipulation dataManipulator = new dataManipulation();
 
+    Color BackgroundC = new Color(0x2b3439);
+    Color LabelC = new Color(0x35abff);
+    Color WhiteC = new Color(0xfbffff);
+    Color ButtonC = new Color(0x374049);
+    Color CancelC = new Color(0xe85d69);
+    Color ShadowC = new Color(0x191C1D);
+    Color TERTIARY = new Color(0x3d464b);
+
     int bY = 200;
 
     addWorkoutWindow()
@@ -27,31 +35,31 @@ public class addWorkoutWindow extends JFrame {
         workoutNameL = new JLabel();
         workoutNameL.setText("Workout Name: ");
         workoutNameL.setFont(new Font("Calibri", Font.BOLD, 21));
-        workoutNameL.setForeground(new Color(230, 230, 230));
+        workoutNameL.setForeground(WhiteC);
         workoutNameL.setBounds(70, 0, 200, 100);
         this.add(workoutNameL);
 
         exerciseNameL = new JLabel("Exercise Name");
         exerciseNameL.setFont(new Font("Calibri", Font.BOLD, 18));
-        exerciseNameL.setForeground(new Color(230, 230, 230));
+        exerciseNameL.setForeground(WhiteC);
         exerciseNameL.setBounds(60, 50, 200, 100);
         this.add(exerciseNameL);
 
         noSetsL = new JLabel("Sets");
         noSetsL.setFont(new Font("Calibri", Font.BOLD, 18));
-        noSetsL.setForeground(new Color(230, 230, 230));
+        noSetsL.setForeground(WhiteC);
         noSetsL.setBounds(240, 50, 200, 100);
         this.add(noSetsL);
 
         noRepsL = new JLabel("Reps");
         noRepsL.setFont(new Font("Calibri", Font.BOLD, 18));
-        noRepsL.setForeground(new Color(230, 230, 230));
+        noRepsL.setForeground(WhiteC);
         noRepsL.setBounds(315, 50, 200, 100);
         this.add(noRepsL);
 
         noRestL = new JLabel("Rest");
         noRestL.setFont(new Font("Calibri", Font.BOLD, 18));
-        noRestL.setForeground(new Color(230, 230, 230));
+        noRestL.setForeground(WhiteC);
         noRestL.setBounds(400, 50, 200, 100);
         this.add(noRestL);
         // --------------------------------
@@ -91,30 +99,34 @@ public class addWorkoutWindow extends JFrame {
         // ---  ---  BUTTON PROPERTIES  ---  ---
         addExerciseB = new JButton("Add Exercise");
         addExerciseB.setFont(new Font("Calibri", Font.BOLD, 21));
+        addExerciseB.setForeground(WhiteC);
         addExerciseB.setBounds(160, bY, excButtonWidth, 40);
         addExerciseB.setFocusable(false);
-        addExerciseB.setBackground(Color.WHITE);
+        addExerciseB.setBackground(ButtonC);
         this.add(addExerciseB);
 
         cancelWorkoutB = new JButton("Cancel");
         cancelWorkoutB.setFont(new Font("Calibri", Font.BOLD, 21));
+        cancelWorkoutB.setForeground(WhiteC);
         cancelWorkoutB.setBounds(20, bY, 100, 40);
         cancelWorkoutB.setFocusable(false);
-        cancelWorkoutB.setBackground(Color.WHITE);
+        cancelWorkoutB.setBackground(ButtonC);
         this.add(cancelWorkoutB);
 
         saveWorkoutB = new JButton("Save");
         saveWorkoutB.setFont(new Font("Calibri", Font.BOLD, 21));
+        saveWorkoutB.setForeground(WhiteC);
         saveWorkoutB.setBounds(380, bY, 100, 40);
         saveWorkoutB.setFocusable(false);
-        saveWorkoutB.setBackground(Color.WHITE);
+        saveWorkoutB.setBackground(ButtonC);
         this.add(saveWorkoutB);
 
         delExerciseB = new JButton("Delete Exercise");
         delExerciseB.setFont(new Font("Calibri", Font.BOLD, 21));
+        delExerciseB.setForeground(WhiteC);
         delExerciseB.setBounds(280, bY, excButtonWidth, 40);
         delExerciseB.setFocusable(false);
-        delExerciseB.setBackground(Color.WHITE);
+        delExerciseB.setBackground(ButtonC);
 //        this.add(delExerciseB);
         // --------------------------------------
 
@@ -218,7 +230,7 @@ public class addWorkoutWindow extends JFrame {
         this.setLayout(null);
         this.setSize(520, 300);
 
-        this.getContentPane().setBackground(new Color(44, 43, 64));
+        this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
