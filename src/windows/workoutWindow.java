@@ -11,15 +11,15 @@ import data.*;
 public class workoutWindow extends JFrame {
 
     JButton startB, setB, restB;
-    JLabel currentExL, nextExL, repsL, restL, elapsedTimeL, setsLeftL;
-    JPanel currentExP, nextExP;
+    JLabel currentExL, nextExL, repsL, restL, elapsedTimeL, setsLeftL, currentL, nextL;
+    JPanel currentP;
     int elapsed_timeE, hoursE, minutesE, secondsE, timeLeft;
     sound sound;
 
     Color BackgroundC = new Color(0xFF2B2D30);
     Color ButtonC = new Color(0x363A3D);
     Color LabelC = new Color(0x73fbfd);
-        Color WhiteC = new Color(0xfbffff);
+    Color WhiteC = new Color(0xfbffff);
 
     Timer elapsedTimer = new Timer(1000, new ActionListener() {
         @Override
@@ -45,37 +45,53 @@ public class workoutWindow extends JFrame {
         sound = new sound();
 
         // --- --- PANEL PROPERTIES --- ---
-        currentExP = new JPanel(new BorderLayout());
-        currentExP.setBounds(100, 25, 550, 50);
-        currentExP.setOpaque(false);
-        this.add(currentExP);
+        currentP = new JPanel();
+        currentP.setLayout(new FlowLayout(FlowLayout.CENTER,0,5));
+        currentP.setBounds(0, 0, 300, 150);
+        currentP.setBackground(Color.BLACK);
+        currentP.setOpaque(false);
+        this.add(currentP);
 
-        nextExP = new JPanel(new BorderLayout());
-        nextExP.setBounds(100, 445, 550, 50);
-        nextExP.setOpaque(false);
-        this.add(nextExP);
         // --------------------------------
 
 
 
         // --- --- LABEL PROPERTIES --- ---
+        currentL = new JLabel();
+        currentL.setText("Current Exercise:");
+        currentL.setFont(new Font("Gadugi", Font.BOLD, 30));
+        currentL.setForeground(WhiteC);
+        currentL.setBounds(40,15,240,50);
+        //currentL.setVerticalAlignment(SwingConstants.CENTER);
+        //currentL.setHorizontalAlignment(SwingConstants.LEFT);
+        currentL.setVisible(true);
+        this.add(currentL);
+
+        nextL = new JLabel();
+        nextL.setText("Next Exercise:");
+        nextL.setFont(new Font("Gadugi", Font.BOLD, 30));
+        nextL.setForeground(WhiteC);
+        nextL.setBounds(545,15,300,50);
+        //nextL.setVerticalAlignment(SwingConstants.CENTER);
+        //nextL.setHorizontalAlignment(SwingConstants.RIGHT);
+        nextL.setVisible(true);
+        this.add(nextL);
+
         currentExL = new JLabel();
-        currentExL.setText("Current Exercise:");
+        currentExL.setText("");
         currentExL.setFont(new Font("Gadugi", Font.BOLD, 30));
         currentExL.setForeground(WhiteC);
-        currentExL.setHorizontalAlignment(SwingConstants.CENTER);
-        currentExL.setVerticalAlignment(SwingConstants.TOP);
+        currentExL.setBounds(55, 35, 200, 100);
         currentExL.setVisible(false);
-        currentExP.add(currentExL);
+        this.add(currentExL);
 
         nextExL = new JLabel();
         nextExL.setText("Next Exercise:");
         nextExL.setFont(new Font("Gadugi", Font.BOLD, 30));
         nextExL.setForeground(WhiteC);
-        nextExL.setHorizontalAlignment(SwingConstants.CENTER);
-        nextExL.setVerticalAlignment(SwingConstants.TOP);
+        nextExL.setBounds(450, 300, 200, 100);
         nextExL.setVisible(false);
-        nextExP.add(nextExL);
+        this.add(nextExL);
 
         setsLeftL = new JLabel();
         setsLeftL.setText("Sets left: ");
@@ -105,7 +121,7 @@ public class workoutWindow extends JFrame {
         elapsedTimeL.setText("00:00:00");
         elapsedTimeL.setFont(new Font("Gadugi", Font.BOLD, 22));
         elapsedTimeL.setForeground(WhiteC);
-        elapsedTimeL.setBounds(8, 0, 100, 40);
+        elapsedTimeL.setBounds(8, 400, 100, 40);
         elapsedTimeL.setVisible(false);
         this.add(elapsedTimeL);
         // --------------------------------
@@ -115,7 +131,7 @@ public class workoutWindow extends JFrame {
         // --- --- BUTTON PROPERTIES --- ---
         startB = new JButton("Start");
         startB.setFont(new Font("Gadugi", Font.BOLD, 21));
-        startB.setBounds(250, 200 - 16, 250, 150);
+        startB.setBounds(275, 225 - 16, 250, 150);
         startB.setFocusable(false);
         startB.setBackground(ButtonC);
         startB.setForeground(LabelC);
@@ -123,7 +139,7 @@ public class workoutWindow extends JFrame {
 
         setB = new JButton("Start Set");
         setB.setFont(new Font("Gadugi", Font.BOLD, 21));
-        setB.setBounds(250, 200 - 16, 250, 150);
+        setB.setBounds(275, 225 - 16, 250, 150);
         setB.setFocusable(false);
         setB.setVisible(false);
         setB.setBackground(ButtonC);
@@ -132,7 +148,7 @@ public class workoutWindow extends JFrame {
 
         restB = new JButton("Rest");
         restB.setFont(new Font("Gadugi", Font.BOLD, 21));
-        restB.setBounds(250, 200 - 16, 250, 150);
+        restB.setBounds(275, 225 - 16, 250, 150);
         restB.setFocusable(false);
         restB.setVisible(false);
         restB.setBackground(ButtonC);
@@ -165,7 +181,7 @@ public class workoutWindow extends JFrame {
                         String nextExercise = dataManipulator.exerciseName[indexo - 1];
 
                         currentExL.setVisible(true);
-                        currentExL.setText("Current: " + dataManipulator.exerciseName[i.get() - 1]);
+                        currentExL.setText("" + dataManipulator.exerciseName[i.get() - 1]);
 
                         j.set(0);
                         sets += j.getAndIncrement();
@@ -175,7 +191,7 @@ public class workoutWindow extends JFrame {
                         repsL.setText("Reps: " + numOfReps);
 
                         nextExL.setVisible(true);
-                        nextExL.setText("Next: " + nextExercise);
+                        nextExL.setText("" + nextExercise);
 
                         restL.setVisible(false);
                         startB.setVisible(false);
@@ -229,7 +245,7 @@ public class workoutWindow extends JFrame {
 
 
         // ---  ---  WINDOW PROPERTIES  ---  ---
-        this.setSize(750, 550);
+        this.setSize(800, 600);
         this.setLayout(null);
 
         this.getContentPane().setBackground(BackgroundC);
