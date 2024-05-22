@@ -11,7 +11,7 @@ import data.*;
 public class workoutWindow extends JFrame {
 
     JButton startB, setB, restB;
-    JLabel currentExL, nextExL, setsL, repsL, restL, elapsedTimeL, setsLeftL;
+    JLabel currentExL, nextExL, repsL, restL, elapsedTimeL, setsLeftL;
     JPanel currentExP, nextExP;
     int elapsed_timeE, hoursE, minutesE, secondsE, timeLeft;
     sound sound;
@@ -71,14 +71,6 @@ public class workoutWindow extends JFrame {
         nextExL.setVerticalAlignment(SwingConstants.TOP);
         nextExL.setVisible(false);
         nextExP.add(nextExL);
-
-        setsL = new JLabel();
-        setsL.setText("Sets: ");
-        setsL.setFont(new Font("Calibri", Font.BOLD, 25));
-        setsL.setForeground(new Color(230, 230, 230));
-        setsL.setBounds(100, 100, 100, 100);
-        setsL.setVisible(false);
-        this.add(setsL);
 
         setsLeftL = new JLabel();
         setsLeftL.setText("Sets left: ");
@@ -156,6 +148,7 @@ public class workoutWindow extends JFrame {
                         elapsedTimeFlag.incrementAndGet();
                     }
                     try {
+                        timer.stop();
                         i.getAndIncrement();
                         int indexo = i.get() + 1;
 
@@ -164,10 +157,7 @@ public class workoutWindow extends JFrame {
                         String nextExercise = dataManipulator.exerciseName[indexo - 1];
 
                         currentExL.setVisible(true);
-                        currentExL.setText("Current Exercise: " + dataManipulator.exerciseName[i.get() - 1]);
-
-                        setsL.setVisible(true);
-                        setsL.setText("Sets: " + sets);
+                        currentExL.setText("Current: " + dataManipulator.exerciseName[i.get() - 1] + " "+sets+"x");
 
                         j.set(0);
                         sets += j.getAndIncrement();
@@ -177,7 +167,7 @@ public class workoutWindow extends JFrame {
                         repsL.setText("Reps: " + numOfReps);
 
                         nextExL.setVisible(true);
-                        nextExL.setText("Next Exercise: " + nextExercise);
+                        nextExL.setText("Next: " + nextExercise);
 
                         restL.setVisible(false);
                         startB.setVisible(false);
@@ -195,7 +185,7 @@ public class workoutWindow extends JFrame {
         setB.addActionListener(
                 (e) -> {
                     int setsLeft = dataManipulator.numSets[i.get() - 1] - j.getAndIncrement();
-
+                    timer.stop();
                     setsLeftL.setText("Sets left: " + setsLeft);
                     setB.setVisible(false);
                     restB.setVisible(true);
@@ -207,10 +197,12 @@ public class workoutWindow extends JFrame {
                 (e) -> {
                     try {
                         timeLeft = dataManipulator.restTime[i.get() - 1];
-                        restL.setText(""+timeLeft);
+                        setB.setText(""+timeLeft);
+                        startB.setText(""+timeLeft);
                         timeLeft--;
                         startTimer();
                         restL.setVisible(true);
+                        restL.setText("Click to skip");
                         restB.setVisible(false);
                         if(setsLeftL.getText().equals("Sets left: 1")) {
                             startB.setVisible(true);
@@ -245,10 +237,13 @@ public class workoutWindow extends JFrame {
     Timer timer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            restL.setText("" + timeLeft);
-            if (timeLeft == 0) {
+            startB.setText(""+timeLeft);
+            setB.setText("" + timeLeft);
+            if (startB.getText().equals("0") || setB.getText().equals("0")) {
                 timer.stop();
                 restL.setText("Rest Done!");
+                setB.setText("Start set");
+                startB.setText("Start");
                 playSFX(0);
             }
             timeLeft -= 1;
