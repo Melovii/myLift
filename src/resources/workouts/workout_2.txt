@@ -1,0 +1,21 @@
+Upper Day
+Incline Bench
+3
+12
+5
+Knee-Ups
+3
+12
+10
+Push Up
+3
+8
+10
+Decline Bench
+3
+8
+5
+Deadlift
+3
+8
+10
