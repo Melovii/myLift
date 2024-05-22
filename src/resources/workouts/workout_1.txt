@@ -2,11 +2,11 @@ push day
 push up
 3
 12
-90
+5
 bench press
 5
 5
-240
+5
 bodyweight dip
 3
 20
