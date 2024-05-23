@@ -1,5 +1,7 @@
 package windows;
 
+import data.dataManipulation;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,8 +17,12 @@ public class mainWindow extends JFrame
     Color ButtonC = new Color(0x363A3D);
     Color ShadowC = new Color(0x191C1D);
 
+    dataManipulation dataManipulator;
+
     public mainWindow()
     {
+        dataManipulator = new dataManipulation();
+
         mainTitle = new JLabel();
         mainTitle.setText("myLift");
         mainTitle.setFont(new Font("Calibri", Font.BOLD , 44));
@@ -60,6 +66,8 @@ public class mainWindow extends JFrame
         infoB.addActionListener(
                 (e) -> new infoWindow()
         );
+
+
         addWorkoutB.addActionListener(
                 (e) -> {
                     new addWorkoutWindow();
@@ -67,10 +75,21 @@ public class mainWindow extends JFrame
         );
 
 
+
+        String[] responses = {"OK", "Create Workout"};
+        ImageIcon icon = new ImageIcon("src/resources/images/error.png");
         viewWorkoutsB.addActionListener(
                 (e) -> {
-                    dispose();
-                    new viewWorkoutsWindow();
+                    if (dataManipulator.noOfFiles()==0) {
+                        int choice = JOptionPane.showOptionDialog(null, "You don't have any workouts saved!", "Error", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,icon, responses, 0);
+                        if(choice ==1 ) {
+                            dispose();
+                            new addWorkoutWindow();
+                        }
+                    } else {
+                        dispose();
+                        new viewWorkoutsWindow();
+                    }
                 }
         );
         // -----------------------------------
@@ -89,4 +108,5 @@ public class mainWindow extends JFrame
         this.setVisible(true);
         // --------------------------------------
     }
+
 }

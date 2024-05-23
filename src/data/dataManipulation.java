@@ -27,7 +27,7 @@ public class dataManipulation {
             br1.close();
 
         } catch (Exception e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            e.printStackTrace();
         }
 
         // no clue why we dont need the -2 anymore but it works
@@ -70,13 +70,10 @@ public class dataManipulation {
             }
 
             bw.close();
-
-            System.out.println("Data saved to file: " + fileName);
-
             updateIndex(index + 1);
 
         } catch (Exception e) {
-            System.out.println("Error saving data: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -92,7 +89,7 @@ public class dataManipulation {
             br.close();
             return index;
         } catch (IOException | NumberFormatException e) {
-            System.out.println("Error reading index file: " + e.getMessage());
+            e.printStackTrace();
             return -1;
         }
     }
@@ -103,7 +100,7 @@ public class dataManipulation {
             bw.write(String.valueOf(index));
             bw.close();
         } catch (IOException e) {
-            System.out.println("Error updating index file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -113,35 +110,26 @@ public class dataManipulation {
             bw.write("1");
             bw.close();
         } catch (IOException e) {
-            System.out.println("Error resetting index: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     public void loadData(int index)
     // method to load data from a specific workout
     {
-        System.out.println("Value of noOfLines " + noOfLines);
-
         try {
             String fileName = "src/resources/workouts/workout_" + index + ".txt";
             BufferedReader br2 = new BufferedReader(new FileReader(fileName));
 
-            String workoutName = br2.readLine();
-            System.out.println(workoutName);
-
             for (int k = 0; k < noOfExercises(index); k++) {
                 exerciseName[k] = br2.readLine();
-                System.out.println(exerciseName[k]);
                 numSets[k] = Integer.parseInt(br2.readLine());
-                System.out.println(numSets[k]);
                 numReps[k] = Integer.parseInt(br2.readLine());
-                System.out.println(numReps[k]);
                 restTime[k] = Integer.parseInt(br2.readLine());
-                System.out.println(restTime[k]);
             }
             br2.close();
         } catch (Exception e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -171,7 +159,7 @@ public class dataManipulation {
             try {
                 file.delete();
             } catch (Exception e) {
-                System.out.println("Error deleting file: " + e.getMessage());
+                e.printStackTrace();
             }
         }
         JOptionPane.showMessageDialog(null, "Deleted all workouts successfully!");
@@ -184,7 +172,6 @@ public class dataManipulation {
             try {
                 BufferedReader br = new BufferedReader(new FileReader(test));
                 workoutNames[i-1] = br.readLine();
-                System.out.println(workoutNames[i-1]);
                 br.close();
             } catch(Exception e) {
                 e.printStackTrace();  // Print the stack trace for better debugging
@@ -204,7 +191,7 @@ public class dataManipulation {
             br1.close();
 
         } catch (Exception e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            e.printStackTrace();
         }
         return noOfLines/4;
     }
