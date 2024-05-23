@@ -210,7 +210,6 @@ public class addWorkoutWindow extends JFrame {
                         // Show success message
                         JOptionPane.showMessageDialog(null, "Workout saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                         dispose();
-                        new mainWindow();
 
                     } catch (Exception ex) {
                         // Show error message
