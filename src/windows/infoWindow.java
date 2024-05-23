@@ -9,24 +9,23 @@ public class infoWindow extends JFrame
 {
 
     Color BackgroundC = new Color(0xFF2B2D30);
-    Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
-    Color ButtonC = new Color(0x363A3D);
 
     JTextArea infoTextArea;
-    JButton returnB;
+
+    ImageIcon icon = new ImageIcon("src/resources/images/icon.png");
 
     infoWindow()
     {
         // --- --- WINDOW PROPERTIES --- ---
         this.setLayout(null);
         this.setSize(new Dimension(780, 580));
-
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("About myLift");
+        this.setIconImage(icon.getImage());
 
         this.setVisible(true);
         // ---------------------------------

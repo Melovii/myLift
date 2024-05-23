@@ -27,6 +27,8 @@ public class addWorkoutWindow extends JFrame {
 
     int bY = 200;
 
+    ImageIcon icon = new ImageIcon("src/resources/images/icon.png");
+
     addWorkoutWindow()
     {
         // --- --- LABEL PROPERTIES --- ---
@@ -229,6 +231,7 @@ public class addWorkoutWindow extends JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Add Workout");
+        this.setIconImage(icon.getImage());
         this.setVisible(true);
         // --------------------------------------
     }

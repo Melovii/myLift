@@ -18,7 +18,8 @@ public class workoutInfoWindow extends JFrame {
     Color BackgroundC = new Color(0xFF2B2D30);
     Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
-    Color ButtonC = new Color(0x363A3D);
+
+    ImageIcon icon = new ImageIcon("src/resources/images/icon.png");
 
     workoutInfoWindow(int index)
     {
@@ -109,6 +110,7 @@ public class workoutInfoWindow extends JFrame {
         this.setLayout(null);
         this.setSize(520, 300);
         this.setTitle("Workout Info");
+        this.setIconImage(icon.getImage());
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
