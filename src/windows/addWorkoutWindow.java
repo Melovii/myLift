@@ -68,26 +68,41 @@ public class addWorkoutWindow extends JFrame {
         workoutNameTF = new JTextField();
         workoutNameTF.setBounds(230, 30, 200, 40);
         workoutNameTF.setFont(new Font("Calibri", Font.PLAIN, 23));
+        workoutNameTF.setBackground(ButtonC);
+        workoutNameTF.setForeground(WhiteC);
+        workoutNameTF.setCaretColor(WhiteC);
         this.add(workoutNameTF);
 
         exerciseNameTF = new JTextField();
         exerciseNameTF.setBounds(45, 120, 145, 25);
         exerciseNameTF.setFont(new Font("Calibri", Font.PLAIN, 18));
+        exerciseNameTF.setBackground(ButtonC);
+        exerciseNameTF.setForeground(WhiteC);
+        exerciseNameTF.setCaretColor(WhiteC);
         this.add(exerciseNameTF);
         
         noSetsTF = new JTextField();
         noSetsTF.setBounds(235, 120, 40, 25);
         noSetsTF.setFont(new Font("Calibri", Font.PLAIN, 18));
+        noSetsTF.setBackground(ButtonC);
+        noSetsTF.setForeground(WhiteC);
+        noSetsTF.setCaretColor(WhiteC);
         this.add(noSetsTF);
         
         noRepsTF = new JTextField();
         noRepsTF.setBounds(315, 120, 40, 25);
         noRepsTF.setFont(new Font("Calibri", Font.PLAIN, 18));
+        noRepsTF.setBackground(ButtonC);
+        noRepsTF.setForeground(WhiteC);
+        noRepsTF.setCaretColor(WhiteC);
         this.add(noRepsTF);
         
         noRestTF = new JTextField();
         noRestTF.setBounds(400, 120, 40, 25);
         noRestTF.setFont(new Font("Calibri", Font.PLAIN, 18));
+        noRestTF.setBackground(ButtonC);
+        noRestTF.setForeground(WhiteC);
+        noRestTF.setCaretColor(WhiteC);
         this.add(noRestTF);
         // ------------------------------------
         
@@ -152,24 +167,6 @@ public class addWorkoutWindow extends JFrame {
                 }
         );
 
-        delExerciseB.addActionListener(
-                (e) -> {
-                    try {
-                        i.getAndDecrement();
-                        removeBoxRow(i.get());
-                        this.setSize(this.getWidth(), this.getHeight() - 50);
-                        bY -= 50;
-                        addExerciseB.setBounds(160, bY, excButtonWidth, 40);
-                        cancelWorkoutB.setBounds(20, bY, 100, 40);
-                        saveWorkoutB.setBounds(380, bY, 100, 40);
-                        delExerciseB.setBounds(280, bY, excButtonWidth, 40);
-                        this.setLocationRelativeTo(null);
-                    } catch (Exception lack) {
-                        System.out.println("Error deleting exercise: " +lack.getMessage());
-                    }
-                }
-        );
-
 
         cancelWorkoutB.addActionListener(
                 (e) -> {
@@ -215,7 +212,7 @@ public class addWorkoutWindow extends JFrame {
 
                     } catch (Exception ex) {
                         // Show error message
-                        JOptionPane.showMessageDialog(null, "Error saving workout: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "You entered something wrong", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
         );
@@ -227,13 +224,11 @@ public class addWorkoutWindow extends JFrame {
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setLayout(null);
         this.setSize(520, 300);
-
         this.getContentPane().setBackground(BackgroundC);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Add Workout");
-
         this.setVisible(true);
         // --------------------------------------
     }
@@ -248,42 +243,33 @@ public class addWorkoutWindow extends JFrame {
         exerciseNameTFi[i] = new JTextField();
         exerciseNameTFi[i].setBounds(45, yPosition, 145, 25);
         exerciseNameTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
+        exerciseNameTFi[i].setBackground(ButtonC);
+        exerciseNameTFi[i].setForeground(WhiteC);
+        exerciseNameTFi[i].setCaretColor(WhiteC);
         this.add(exerciseNameTFi[i]);
 
         noSetsTFi[i] = new JTextField();
         noSetsTFi[i].setBounds(235, yPosition, 40, 25);
         noSetsTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
+        noSetsTFi[i].setBackground(ButtonC);
+        noSetsTFi[i].setForeground(WhiteC);
+        noSetsTFi[i].setCaretColor(WhiteC);
         this.add(noSetsTFi[i]);
 
         noRepsTFi[i] = new JTextField();
         noRepsTFi[i].setBounds(315, yPosition, 40, 25);
         noRepsTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
+        noRepsTFi[i].setBackground(ButtonC);
+        noRepsTFi[i].setForeground(WhiteC);
+        noRepsTFi[i].setCaretColor(WhiteC);
         this.add(noRepsTFi[i]);
 
         noRestTFi[i] = new JTextField();
         noRestTFi[i].setBounds(400, yPosition, 40, 25);
         noRestTFi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
+        noRestTFi[i].setBackground(ButtonC);
+        noRestTFi[i].setForeground(WhiteC);
+        noRestTFi[i].setCaretColor(WhiteC);
         this.add(noRestTFi[i]);
-    }
-
-    public void removeBoxRow(int i)
-    {
-        if (exerciseNameTFi[i] != null) {
-            this.remove(exerciseNameTFi[i]);
-        }
-        if (noSetsTFi[i] != null) {
-            this.remove(noSetsTFi[i]);
-        }
-        if (noRepsTFi[i] != null) {
-            this.remove(noRepsTFi[i]);
-        }
-        if (noRestTFi[i] != null) {
-            this.remove(noRestTFi[i]);
-        }
-        // Set to null to avoid null pointer exceptions
-        exerciseNameTFi[i] = null;
-        noSetsTFi[i] = null;
-        noRepsTFi[i] = null;
-        noRestTFi[i] = null;
     }
 }

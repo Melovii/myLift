@@ -12,27 +12,28 @@ public class infoWindow extends JFrame
     Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
     Color ButtonC = new Color(0x363A3D);
-    Color ShadowC = new Color(0x191C1D);
 
     JTextArea infoTextArea;
+    JButton returnB;
 
     infoWindow()
     {
         // --- --- WINDOW PROPERTIES --- ---
-        this.setLayout(new BorderLayout());
-        this.setSize(780, 580);
+        this.setLayout(null);
+        this.setSize(new Dimension(780, 580));
 
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setTitle("App Insight");
+        this.setTitle("About myLift");
 
         this.setVisible(true);
         // ---------------------------------
 
         infoTextArea = new JTextArea();
-        infoTextArea.setForeground(new Color(10, 10, 10));
+        infoTextArea.setBounds(0,0,780,580);
+        infoTextArea.setOpaque(false);
         infoTextArea.setBackground(BackgroundC);
         infoTextArea.setPreferredSize(new Dimension(300, 200));
         infoTextArea.setFont(new Font("Times New Roman", Font.PLAIN, 21));
@@ -59,9 +60,7 @@ public class infoWindow extends JFrame
 
         this.add(infoTextArea, BorderLayout.CENTER);
 
-//        JScrollPane scrollPane = new JScrollPane(infoTextArea);
-//        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-//
-//        this.add(scrollPane, BorderLayout.CENTER);
+        // ---------------------------------
+
     }
 }
