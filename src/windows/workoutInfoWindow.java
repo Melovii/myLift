@@ -18,9 +18,6 @@ public class workoutInfoWindow extends JFrame {
     Color LabelC = new Color(0x35abff);
     Color WhiteC = new Color(0xfbffff);
     Color ButtonC = new Color(0x374049);
-    Color CancelC = new Color(0xe85d69);
-    Color ShadowC = new Color(0x191C1D);
-    Color TERTIARY = new Color(0x3d464b);
 
     workoutInfoWindow(int index)
     {
@@ -103,7 +100,7 @@ public class workoutInfoWindow extends JFrame {
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setLayout(null);
         this.setSize(520, 300);
-
+        this.setTitle("Workout Info");
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);

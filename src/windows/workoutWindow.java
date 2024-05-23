@@ -266,8 +266,8 @@ public class workoutWindow extends JFrame {
 
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setSize(800, 600);
+        this.setTitle("myLift");
         this.setLayout(null);
-
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);

@@ -18,7 +18,6 @@ public class viewWorkoutsWindow extends JFrame
     Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
     Color ButtonC = new Color(0x363A3D);
-    Color ShadowC = new Color(0x191C1D);
 
     viewWorkoutsWindow()
     {
@@ -27,7 +26,6 @@ public class viewWorkoutsWindow extends JFrame
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setLayout(null);
         this.setSize(520, 600);
-
         this.setTitle("Workouts List");
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +68,6 @@ public class viewWorkoutsWindow extends JFrame
 
         deleteB.addActionListener(
                 (e) -> {
-                    // code here
                     dataManipulator.deleteFiles();
                     dispose();
                     new mainWindow();
@@ -87,7 +84,6 @@ public class viewWorkoutsWindow extends JFrame
         for (int i=0; i < numWorkouts; i++) {
 
             String workoutName = dataManipulator.workoutNames[i];
-            int noOfExercises = dataManipulator.noOfExercises(i+1);
 
             startB[i] = new JButton("▶");
             startB[i].setFocusable(false);
@@ -126,7 +122,7 @@ public class viewWorkoutsWindow extends JFrame
             workoutNameP[i].setBackground(ButtonC);
 
             workoutNameL[i] = new JLabel();
-            workoutNameL[i].setText(workoutName); // Number of exercises: " + noOfExercises
+            workoutNameL[i].setText(workoutName);
             workoutNameL[i].setForeground(WhiteC);
             workoutNameL[i].setFont(new Font("Calibri", Font.PLAIN, 21)); // 21
             workoutNameL[i].setVerticalAlignment(SwingConstants.CENTER);
@@ -144,7 +140,6 @@ public class viewWorkoutsWindow extends JFrame
         workoutNameTitleL.setFont(new Font("Calibri", Font.BOLD , 24));
         workoutNameTitleL.setForeground(LabelC);
         this.add(workoutNameTitleL);
-
 
     }
 }
