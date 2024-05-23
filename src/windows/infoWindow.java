@@ -4,8 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 
+
 public class infoWindow extends JFrame
 {
+
+    Color BackgroundC = new Color(0xFF2B2D30);
+    Color LabelC = new Color(0x73fbfd);
+    Color WhiteC = new Color(0xfbffff);
+    Color ButtonC = new Color(0x363A3D);
+    Color ShadowC = new Color(0x191C1D);
 
     JTextArea infoTextArea;
 
@@ -15,7 +22,7 @@ public class infoWindow extends JFrame
         this.setLayout(new BorderLayout());
         this.setSize(780, 580);
 
-        this.getContentPane().setBackground(new Color(44, 43, 64));
+        this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);

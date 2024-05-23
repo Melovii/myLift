@@ -89,7 +89,7 @@ public class workoutWindow extends JFrame {
         nextExL.setText("Next Exercise:");
         nextExL.setFont(new Font("Gadugi", Font.BOLD, 30));
         nextExL.setForeground(WhiteC);
-        nextExL.setBounds(450, 300, 200, 100);
+        nextExL.setBounds(450, 35, 200, 100);
         nextExL.setVisible(false);
         this.add(nextExL);
 

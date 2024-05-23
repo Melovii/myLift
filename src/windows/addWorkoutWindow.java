@@ -19,13 +19,11 @@ public class addWorkoutWindow extends JFrame {
     JTextField[] noRestTFi = new JTextField[10];
     dataManipulation dataManipulator = new dataManipulation();
 
-    Color BackgroundC = new Color(0x2b3439);
-    Color LabelC = new Color(0x35abff);
+    Color BackgroundC = new Color(0xFF2B2D30);
+    Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
-    Color ButtonC = new Color(0x374049);
-    Color CancelC = new Color(0xe85d69);
+    Color ButtonC = new Color(0x363A3D);
     Color ShadowC = new Color(0x191C1D);
-    Color TERTIARY = new Color(0x3d464b);
 
     int bY = 200;
 
@@ -35,7 +33,7 @@ public class addWorkoutWindow extends JFrame {
         workoutNameL = new JLabel();
         workoutNameL.setText("Workout Name: ");
         workoutNameL.setFont(new Font("Calibri", Font.BOLD, 21));
-        workoutNameL.setForeground(WhiteC);
+        workoutNameL.setForeground(LabelC);
         workoutNameL.setBounds(70, 0, 200, 100);
         this.add(workoutNameL);
 
