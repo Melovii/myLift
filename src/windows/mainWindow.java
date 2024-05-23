@@ -35,13 +35,13 @@ public class mainWindow extends JFrame
         this.add(mainTitleShadow);
 
         // ---  ---  BUTTON PROPERTIES  ---  ---
-        infoB = new JButton("i");
-        infoB.setFont(new Font("Times New Roman", Font.BOLD, 26));
+        infoB = new JButton("App Insight");
         infoB.setForeground(WhiteC);
-        infoB.setBounds(20, 420, 44, 44);
+//        infoB.setBounds(20, 420, 44, 44);
+        infoB.setBounds(120, 340, 280, 60);
         infoB.setFocusable(false);
         infoB.setBackground(ButtonC);
-        infoB.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
+//        infoB.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
         this.add(infoB);
 
         addWorkoutB = new JButton("Add Workout");
@@ -51,16 +51,16 @@ public class mainWindow extends JFrame
         addWorkoutB.setBackground(ButtonC);
         this.add(addWorkoutB);
 
-        workoutB = new JButton("Start Workout");
-        workoutB.setForeground(WhiteC);
-        workoutB.setBounds(120, 240, 280, 60);
-        workoutB.setFocusable(false);
-        workoutB.setBackground(ButtonC);
-        this.add(workoutB);
+//        workoutB = new JButton("Start Workout");
+//        workoutB.setForeground(WhiteC);
+//        workoutB.setBounds(120, 340, 280, 60);
+//        workoutB.setFocusable(false);
+//        workoutB.setBackground(ButtonC);
+//        this.add(workoutB);
 
         viewWorkoutsB = new JButton("Workouts List");
         viewWorkoutsB.setForeground(WhiteC);
-        viewWorkoutsB.setBounds(120, 340, 280, 60);
+        viewWorkoutsB.setBounds(120, 240, 280, 60);
         viewWorkoutsB.setFocusable(false);
         viewWorkoutsB.setBackground(ButtonC);
         this.add(viewWorkoutsB);
@@ -80,12 +80,12 @@ public class mainWindow extends JFrame
                 }
         );
 
-        workoutB.addActionListener(
-                (e) -> {
-                    dispose();
-                    new workoutWindow(2); // TODO: ASK USER FOR INDEX (VIEW WORKOUTS)
-                }
-        );
+//        workoutB.addActionListener(
+//                (e) -> {
+//                    dispose();
+//                    new workoutWindow(2); // TODO: ASK USER FOR INDEX (VIEW WORKOUTS)
+//                }
+//        );
 
         viewWorkoutsB.addActionListener(
                 (e) -> {

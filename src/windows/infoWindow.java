@@ -26,19 +26,21 @@ public class infoWindow extends JFrame
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setTitle("Information");
+        this.setTitle("App Insight");
 
         this.setVisible(true);
         // ---------------------------------
 
         infoTextArea = new JTextArea();
         infoTextArea.setForeground(new Color(10, 10, 10));
+        infoTextArea.setBackground(ButtonC);
         infoTextArea.setPreferredSize(new Dimension(300, 200));
         infoTextArea.setFont(new Font("Times New Roman", Font.BOLD, 21));
         infoTextArea.setLineWrap(true);
         infoTextArea.setFocusable(false);
         infoTextArea.setEditable(false);
-        infoTextArea.setBorder(BorderFactory.createLineBorder(new Color(44, 43, 64), 40));
+        infoTextArea.setForeground(WhiteC);
+        infoTextArea.setBorder(BorderFactory.createLineBorder(BackgroundC, 40));
 
         //  SET LABEL TO FILE CONTENTS
 
