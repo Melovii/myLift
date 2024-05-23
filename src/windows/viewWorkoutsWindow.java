@@ -19,6 +19,8 @@ public class viewWorkoutsWindow extends JFrame
     Color WhiteC = new Color(0xfbffff);
     Color ButtonC = new Color(0x363A3D);
 
+    ImageIcon icon = new ImageIcon("src/resources/images/icon.png");
+
     viewWorkoutsWindow()
     {
 
@@ -27,6 +29,7 @@ public class viewWorkoutsWindow extends JFrame
         this.setLayout(null);
         this.setSize(520, 600);
         this.setTitle("Workouts List");
+        this.setIconImage(icon.getImage());
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);

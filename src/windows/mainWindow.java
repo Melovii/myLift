@@ -9,7 +9,6 @@ public class mainWindow extends JFrame
 {
 
     JButton addWorkoutB, viewWorkoutsB, infoB;
-    JLabel mainTitle, mainTitleShadow;
 
     Color BackgroundC = new Color(0xFF2B2D30);
     Color LabelC = new Color(0x73fbfd);
@@ -17,25 +16,17 @@ public class mainWindow extends JFrame
     Color ButtonC = new Color(0x363A3D);
     Color ShadowC = new Color(0x191C1D);
 
+    Image title;
+    ImageIcon icon = new ImageIcon("src/resources/images/icon.png");
+
     dataManipulation dataManipulator;
 
     public mainWindow()
     {
         dataManipulator = new dataManipulation();
 
-        mainTitle = new JLabel();
-        mainTitle.setText("myLift");
-        mainTitle.setFont(new Font("Calibri", Font.BOLD , 44));
-        mainTitle.setBounds(200, 50, 280, 60);
-        mainTitle.setForeground(LabelC);
-        this.add(mainTitle);
+        title = new ImageIcon("src/resources/images/cropped_icon.png").getImage();
 
-        mainTitleShadow = new JLabel();
-        mainTitleShadow.setText("myLift");
-        mainTitleShadow.setFont(new Font("Calibri", Font.BOLD , 44));
-        mainTitleShadow.setBounds(198, 52, 280, 60);
-        mainTitleShadow.setForeground(ShadowC);
-        this.add(mainTitleShadow);
 
         // ---  ---  BUTTON PROPERTIES  ---  ---
         infoB = new JButton("About myLift");
@@ -77,11 +68,11 @@ public class mainWindow extends JFrame
 
 
         String[] responses = {"OK", "Create Workout"};
-        ImageIcon icon = new ImageIcon("src/resources/images/error.png");
+        ImageIcon error = new ImageIcon("src/resources/images/error.png");
         viewWorkoutsB.addActionListener(
                 (e) -> {
                     if (dataManipulator.noOfFiles()==0) {
-                        int choice = JOptionPane.showOptionDialog(null, "You don't have any workouts saved!", "Error", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,icon, responses, 0);
+                        int choice = JOptionPane.showOptionDialog(null, "You don't have any workouts saved!", "Error", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,error, responses, 0);
                         if(choice ==1 ) {
                             dispose();
                             new addWorkoutWindow();
@@ -99,6 +90,7 @@ public class mainWindow extends JFrame
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setLayout(null);
         this.setTitle("myLift");
+        this.setIconImage(icon.getImage());
         this.setSize(520, 520);
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,6 +99,13 @@ public class mainWindow extends JFrame
         this.setTitle("myLift");
         this.setVisible(true);
         // --------------------------------------
+    }
+
+
+    public void paint(Graphics g) {
+        super.paint(g);
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.drawImage(title, 155, 55, null);  // Draw image using panel dimensions
     }
 
 }

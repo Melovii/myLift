@@ -21,6 +21,8 @@ public class workoutWindow extends JFrame {
     Color WhiteC = new Color(0xfbffff);
     Color Red = new Color(0xFC5A5A);
 
+    ImageIcon icon = new ImageIcon("src/resources/images/icon.png");
+
     Timer elapsedTimer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -267,6 +269,7 @@ public class workoutWindow extends JFrame {
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setSize(800, 600);
         this.setTitle("myLift");
+        this.setIconImage(icon.getImage());
         this.setLayout(null);
         this.getContentPane().setBackground(BackgroundC);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
