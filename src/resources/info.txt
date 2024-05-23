@@ -1,18 +1,18 @@
 Plan Your Workouts:
-- Create custom routines with exercises, sets, reps, and rest time between
-each set.
+- Click "Add Workout" to create routines with exercises, sets, reps, and rest time
+between each set.
 
-Track Your Progress:
-- See all your saved workouts in one list for easy access.
+    - Rep: The repetition of a single exercise
+    - Set: A set of reps (3 sets of 8 reps = 24 repetitions of an exercise with rest
+    time in between sets)
 
-Guided Workouts:
-- Start your workout plan and get timed rest prompts.
+Start working out:
+- Click "Start Workout" to view a list of your workouts. Click the 'i' button for
+more information about your workout, or click the play button to get started!
 
-Effortless Efficiency: Maximize your gym time!
-- Now you can focus on your form, not your phone. This app handles the
-rest timing, preventing you from distractions in your workout.
+Efficiency:
+- You can focus on resting while the app handles the rest time. A sound plays
+to let you know your rest is done!
 
-* Note: Rest refers to the seconds you rest between each set
-(might want to inlude such information with mouse on hover method)
 
-copyright: mel n vrosh©️
+made by: mel n vrosh©️

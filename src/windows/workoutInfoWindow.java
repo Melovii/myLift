@@ -118,7 +118,6 @@ public class workoutInfoWindow extends JFrame {
         // ---  ---  Calls addBoxRow & Resizes Window according to exercise count  ---  ---
         for(int i = 0; i < dataManipulator.noOfExercises(index)-1; i++) {
             addBoxRow(i);
-            this.setSize(this.getWidth(), this.getHeight() + 15);
         }
 
     }
@@ -127,6 +126,7 @@ public class workoutInfoWindow extends JFrame {
     public void addBoxRow(int i)
     {
         int yPosition = (i+1) *50 + 120;
+        this.setSize(this.getWidth(), yPosition+75);
 
         exerciseNameMLi[i] = new JLabel();
         exerciseNameMLi[i].setBounds(45, yPosition, 145, 25);

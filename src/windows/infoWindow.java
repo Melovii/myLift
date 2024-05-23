@@ -33,9 +33,9 @@ public class infoWindow extends JFrame
 
         infoTextArea = new JTextArea();
         infoTextArea.setForeground(new Color(10, 10, 10));
-        infoTextArea.setBackground(ButtonC);
+        infoTextArea.setBackground(BackgroundC);
         infoTextArea.setPreferredSize(new Dimension(300, 200));
-        infoTextArea.setFont(new Font("Times New Roman", Font.BOLD, 21));
+        infoTextArea.setFont(new Font("Times New Roman", Font.PLAIN, 21));
         infoTextArea.setLineWrap(true);
         infoTextArea.setFocusable(false);
         infoTextArea.setEditable(false);
