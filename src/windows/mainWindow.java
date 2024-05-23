@@ -13,10 +13,7 @@ public class mainWindow extends JFrame
     Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
     Color ButtonC = new Color(0x363A3D);
-    Color CancelC = new Color(0xe85d69);
     Color ShadowC = new Color(0x191C1D);
-    Color TERTIARY = new Color(0x3d464b);
-
 
     public mainWindow()
     {
@@ -44,6 +41,7 @@ public class mainWindow extends JFrame
         infoB.setBounds(20, 420, 44, 44);
         infoB.setFocusable(false);
         infoB.setBackground(ButtonC);
+        infoB.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
         this.add(infoB);
 
         addWorkoutB = new JButton("Add Workout");

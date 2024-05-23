@@ -8,18 +8,17 @@ import java.awt.*;
 public class viewWorkoutsWindow extends JFrame
 {
     JButton returnB, deleteB;
+    JLabel workoutNameTitleL;
     JButton[] infoB = new JButton[10];
     JButton[] startB = new JButton[10];
     JPanel[] workoutNameP;
     JLabel[] workoutNameL;
 
-    Color BackgroundC = new Color(0x2b3439);
-    Color LabelC = new Color(0x35abff);
+    Color BackgroundC = new Color(0xFF2B2D30);
+    Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
-    Color ButtonC = new Color(0x374049);
-    Color CancelC = new Color(0xe85d69);
+    Color ButtonC = new Color(0x363A3D);
     Color ShadowC = new Color(0x191C1D);
-    Color TERTIARY = new Color(0x3d464b);
 
     viewWorkoutsWindow()
     {
@@ -48,6 +47,7 @@ public class viewWorkoutsWindow extends JFrame
         returnB.setFocusable(false);
         returnB.setBackground(ButtonC);
         returnB.setForeground(WhiteC);
+        returnB.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
         this.add(returnB);
 
         returnB.addActionListener(
@@ -82,7 +82,7 @@ public class viewWorkoutsWindow extends JFrame
         workoutNameP = new JPanel[6];
         workoutNameL = new JLabel[6];
         dataManipulator.loadWorkoutNames();
-        int height = 50;
+        int height = 75;
         int numWorkouts = dataManipulator.noOfFiles();
 
         for (int i=0; i < numWorkouts; i++) {
@@ -122,17 +122,30 @@ public class viewWorkoutsWindow extends JFrame
 
 
             workoutNameP[i] = new JPanel();
+            workoutNameP[i].setLayout(new BorderLayout());
             workoutNameP[i].setBounds(100, height, 300, 50);
-            workoutNameP[i].setBackground(WhiteC);
+            workoutNameP[i].setBackground(ButtonC);
 
             workoutNameL[i] = new JLabel();
-            workoutNameL[i].setText("Name: " + workoutName + "    Number of exercises: " + noOfExercises);
+            workoutNameL[i].setText(workoutName); // Number of exercises: " + noOfExercises
+            workoutNameL[i].setForeground(WhiteC);
+            workoutNameL[i].setFont(new Font("Calibri", Font.PLAIN, 21)); // 21
+            workoutNameL[i].setVerticalAlignment(SwingConstants.CENTER);
+            workoutNameL[i].setHorizontalAlignment(SwingConstants.CENTER);
 
-            workoutNameP[i].add(workoutNameL[i]);
+            workoutNameP[i].add(workoutNameL[i], BorderLayout.CENTER);
             this.add(workoutNameP[i]);
 
             height += 75;
         }
         // ---------------------------------------------------
+
+        workoutNameTitleL = new JLabel("Workout Name");
+        workoutNameTitleL.setBounds(175, 20, 200, 50);
+        workoutNameTitleL.setFont(new Font("Calibri", Font.BOLD , 24));
+        workoutNameTitleL.setForeground(LabelC);
+        this.add(workoutNameTitleL);
+
+
     }
 }
