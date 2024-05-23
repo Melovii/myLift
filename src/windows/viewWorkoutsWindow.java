@@ -43,11 +43,10 @@ public class viewWorkoutsWindow extends JFrame
 
         returnB = new JButton("←");
         returnB.setFont(new Font("Calibri", Font.BOLD, 19));
-        returnB.setBounds(10, 510, 40, 40);
+        returnB.setBounds(10, 500, 51, 51);
         returnB.setFocusable(false);
         returnB.setBackground(ButtonC);
         returnB.setForeground(WhiteC);
-        returnB.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
         this.add(returnB);
 
         returnB.addActionListener(
