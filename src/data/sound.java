@@ -9,8 +9,6 @@ import java.net.URL;
 public class sound {
     Clip clip;
     FloatControl fc;
-    boolean mute = false;
-    float previousVol;
     float currentVol;
     URL soundURL[] = new URL[5];
 

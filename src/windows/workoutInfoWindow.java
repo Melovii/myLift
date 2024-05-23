@@ -12,12 +12,13 @@ public class workoutInfoWindow extends JFrame {
     JLabel[] noSetsMLi = new JLabel[10];
     JLabel[] noRepsMLi = new JLabel[10];
     JLabel[] noRestMLi = new JLabel[10];
+    JPanel workoutP;
     dataManipulation dataManipulator;
 
-    Color BackgroundC = new Color(0x2b3439);
-    Color LabelC = new Color(0x35abff);
+    Color BackgroundC = new Color(0xFF2B2D30);
+    Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
-    Color ButtonC = new Color(0x374049);
+    Color ButtonC = new Color(0x363A3D);
 
     workoutInfoWindow(int index)
     {
@@ -29,36 +30,43 @@ public class workoutInfoWindow extends JFrame {
         String workoutName = dataManipulator.workoutNames[index-1];
         // -------------------------
 
+        workoutP = new JPanel(new BorderLayout());
+        workoutP.setBackground(BackgroundC);
+        workoutP.setBounds(0, 0, 520, 75);
+        this.add(workoutP);
+
         // --- --- LABEL PROPERTIES --- ---
         workoutNameL = new JLabel();
-        workoutNameL.setText("Workout Name: " + workoutName);
-        workoutNameL.setFont(new Font("Calibri", Font.BOLD, 21));
-        workoutNameL.setForeground(new Color(230, 230, 230));
-        workoutNameL.setBounds(70, 0, 400, 100);
-        this.add(workoutNameL);
+        workoutNameL.setText("" + workoutName);
+        workoutNameL.setFont(new Font("Gadugi", Font.BOLD, 21));
+        workoutNameL.setForeground(WhiteC);
+        workoutNameL.setHorizontalAlignment(SwingConstants.CENTER);
+        workoutNameL.setVerticalAlignment(SwingConstants.CENTER);
+        //workoutNameL.setBounds(70, 0, 400, 100);
+        workoutP.add(workoutNameL);
 
         exerciseNameL = new JLabel("Exercise Name");
-        exerciseNameL.setFont(new Font("Calibri", Font.BOLD, 18));
-        exerciseNameL.setForeground(new Color(230, 230, 230));
-        exerciseNameL.setBounds(60, 50, 200, 100);
+        exerciseNameL.setFont(new Font("Gadugi", Font.BOLD, 16));
+        exerciseNameL.setForeground(LabelC);
+        exerciseNameL.setBounds(60, 40, 200, 100);
         this.add(exerciseNameL);
 
         noSetsL = new JLabel("Sets");
-        noSetsL.setFont(new Font("Calibri", Font.BOLD, 18));
-        noSetsL.setForeground(new Color(230, 230, 230));
-        noSetsL.setBounds(240, 50, 200, 100);
+        noSetsL.setFont(new Font("Gadugi", Font.BOLD, 16));
+        noSetsL.setForeground(LabelC);
+        noSetsL.setBounds(240, 40, 200, 100);
         this.add(noSetsL);
 
         noRepsL = new JLabel("Reps");
-        noRepsL.setFont(new Font("Calibri", Font.BOLD, 18));
-        noRepsL.setForeground(new Color(230, 230, 230));
-        noRepsL.setBounds(315, 50, 200, 100);
+        noRepsL.setFont(new Font("Gadugi", Font.BOLD, 16));
+        noRepsL.setForeground(LabelC);
+        noRepsL.setBounds(315, 40, 200, 100);
         this.add(noRepsL);
 
         noRestL = new JLabel("Rest");
-        noRestL.setFont(new Font("Calibri", Font.BOLD, 18));
-        noRestL.setForeground(new Color(230, 230, 230));
-        noRestL.setBounds(400, 50, 200, 100);
+        noRestL.setFont(new Font("Gadugi", Font.BOLD, 16));
+        noRestL.setForeground(LabelC);
+        noRestL.setBounds(400, 40, 200, 100);
         this.add(noRestL);
         // --------------------------------
 
@@ -67,30 +75,30 @@ public class workoutInfoWindow extends JFrame {
         // --- --- EXERCISE LABEL PROPERTIES --- ---
 
         exerciseNameML = new JLabel();
-        exerciseNameML.setBounds(45, 120, 145, 25);
-        exerciseNameML.setFont(new Font("Calibri", Font.PLAIN, 18));
-        exerciseNameML.setForeground(new Color(230, 230, 230));
+        exerciseNameML.setBounds(62, 120, 145, 25);
+        exerciseNameML.setFont(new Font("Gadugi", Font.PLAIN, 16));
+        exerciseNameML.setForeground(WhiteC);
         exerciseNameML.setText(""+dataManipulator.exerciseName[0]);
         this.add(exerciseNameML);
 
         noSetsML = new JLabel();
-        noSetsML.setBounds(235, 120, 40, 25);
-        noSetsML.setFont(new Font("Calibri", Font.PLAIN, 18));
-        noSetsML.setForeground(new Color(230, 230, 230));
+        noSetsML.setBounds(248, 120, 40, 25);
+        noSetsML.setFont(new Font("Gadugi", Font.PLAIN, 16));
+        noSetsML.setForeground(WhiteC);
         noSetsML.setText(""+dataManipulator.numSets[0]);
         this.add(noSetsML);
 
         noRepsML = new JLabel();
-        noRepsML.setBounds(315, 120, 40, 25);
-        noRepsML.setFont(new Font("Calibri", Font.PLAIN, 18));
-        noRepsML.setForeground(new Color(230, 230, 230));
+        noRepsML.setBounds(323, 120, 40, 25);
+        noRepsML.setFont(new Font("Gadugi", Font.PLAIN, 16));
+        noRepsML.setForeground(WhiteC);
         noRepsML.setText(""+dataManipulator.numReps[0]);
         this.add(noRepsML);
 
         noRestML = new JLabel();
-        noRestML.setBounds(400, 120, 40, 25);
-        noRestML.setFont(new Font("Calibri", Font.PLAIN, 18));
-        noRestML.setForeground(new Color(230, 230, 230));
+        noRestML.setBounds(407, 120, 40, 25);
+        noRestML.setFont(new Font("Gadugi", Font.PLAIN, 16));
+        noRestML.setForeground(WhiteC);
         noRestML.setText(""+dataManipulator.restTime[0]);
         this.add(noRestML);
         // ------------------------------------
@@ -123,33 +131,33 @@ public class workoutInfoWindow extends JFrame {
     public void addBoxRow(int i)
     {
         int yPosition = (i+1) *50 + 120;
-        this.setSize(this.getWidth(), yPosition+75);
+        this.setSize(this.getWidth(), yPosition+88);
 
         exerciseNameMLi[i] = new JLabel();
-        exerciseNameMLi[i].setBounds(45, yPosition, 145, 25);
-        exerciseNameMLi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
-        exerciseNameMLi[i].setForeground(new Color(230, 230, 230));
+        exerciseNameMLi[i].setBounds(62, yPosition, 145, 25);
+        exerciseNameMLi[i].setFont(new Font("Gadugi", Font.PLAIN, 16));
+        exerciseNameMLi[i].setForeground(WhiteC);
         exerciseNameMLi[i].setText(""+dataManipulator.exerciseName[i+1]);
         this.add(exerciseNameMLi[i]);
 
         noSetsMLi[i] = new JLabel();
-        noSetsMLi[i].setBounds(235, yPosition, 40, 25);
-        noSetsMLi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
-        noSetsMLi[i].setForeground(new Color(230, 230, 230));
+        noSetsMLi[i].setBounds(248, yPosition, 40, 25);
+        noSetsMLi[i].setFont(new Font("Gadugi", Font.PLAIN, 16));
+        noSetsMLi[i].setForeground(WhiteC);
         noSetsMLi[i].setText(""+dataManipulator.numSets[i+1]);
         this.add(noSetsMLi[i]);
 
         noRepsMLi[i] = new JLabel();
-        noRepsMLi[i].setBounds(315, yPosition, 40, 25);
-        noRepsMLi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
-        noRepsMLi[i].setForeground(new Color(230, 230, 230));
+        noRepsMLi[i].setBounds(323, yPosition, 40, 25);
+        noRepsMLi[i].setFont(new Font("Gadugi", Font.PLAIN, 16));
+        noRepsMLi[i].setForeground(WhiteC);
         noRepsMLi[i].setText(""+dataManipulator.numReps[i+1]);
         this.add(noRepsMLi[i]);
 
         noRestMLi[i] = new JLabel();
-        noRestMLi[i].setBounds(400, yPosition, 40, 25);
-        noRestMLi[i].setFont(new Font("Calibri", Font.PLAIN, 18));
-        noRestMLi[i].setForeground(new Color(230, 230, 230));
+        noRestMLi[i].setBounds(407, yPosition, 40, 25);
+        noRestMLi[i].setFont(new Font("Gadugi", Font.PLAIN, 16));
+        noRestMLi[i].setForeground(WhiteC);
         noRestMLi[i].setText(""+dataManipulator.restTime[i+1]);
         this.add(noRestMLi[i]);
     }
