@@ -43,7 +43,7 @@ public class viewWorkoutsWindow extends JFrame
         // ---  ---  ---  ---  BUTTONS AND ACTIONS ---  ---  ---  ---
 
         returnB = new JButton("←");
-        returnB.setFont(new Font("Calibri", Font.BOLD, 19));
+        returnB.setFont(new Font("Calibri", Font.BOLD, 17));
         returnB.setBounds(10, 500, 51, 51);
         returnB.setFocusable(false);
         returnB.setBackground(ButtonC);
