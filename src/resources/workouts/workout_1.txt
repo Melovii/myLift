@@ -1,0 +1,25 @@
+Upper Day
+Bench Press
+3
+10
+90
+Pull Up
+4
+8
+5
+Incline Bench Press
+3
+12
+60
+Barbell Curl
+3
+10
+90
+Tricep Extension
+4
+8
+90
+Leg Raises
+3
+12
+60

@@ -121,6 +121,9 @@ public class dataManipulation {
             String fileName = "src/resources/workouts/workout_" + index + ".txt";
             BufferedReader br2 = new BufferedReader(new FileReader(fileName));
 
+            String workoutName = br2.readLine();
+            System.out.println(workoutName);
+
             for (int k = 0; k < noOfExercises(index); k++) {
                 exerciseName[k] = br2.readLine();
                 numSets[k] = Integer.parseInt(br2.readLine());
