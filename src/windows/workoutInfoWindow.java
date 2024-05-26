@@ -23,13 +23,12 @@ public class workoutInfoWindow extends JFrame {
 
     workoutInfoWindow(int index)
     {
+        // Instantiate dataManipulator class and load workout data
         dataManipulator = new dataManipulation(index);
         dataManipulator.loadData(index);
         dataManipulator.loadWorkoutNames();
 
-        // --- --- VARIABLES --- ---
         String workoutName = dataManipulator.workoutNames[index-1];
-        // -------------------------
 
         workoutP = new JPanel(new BorderLayout());
         workoutP.setBackground(BackgroundC);
@@ -43,7 +42,6 @@ public class workoutInfoWindow extends JFrame {
         workoutNameL.setForeground(WhiteC);
         workoutNameL.setHorizontalAlignment(SwingConstants.CENTER);
         workoutNameL.setVerticalAlignment(SwingConstants.CENTER);
-        //workoutNameL.setBounds(70, 0, 400, 100);
         workoutP.add(workoutNameL);
 
         exerciseNameL = new JLabel("Exercise Name");
@@ -74,7 +72,6 @@ public class workoutInfoWindow extends JFrame {
 
 
         // --- --- EXERCISE LABEL PROPERTIES --- ---
-
         exerciseNameML = new JLabel();
         exerciseNameML.setBounds(62, 120, 145, 25);
         exerciseNameML.setFont(new Font("Gadugi", Font.PLAIN, 16));
@@ -122,14 +119,14 @@ public class workoutInfoWindow extends JFrame {
 
 
 
-        // ---  ---  Calls addBoxRow & Resizes Window according to exercise count  ---  ---
+        // ---  ---  Calls addBoxRow & resizes window according to number of exercises  ---  ---
         for(int i = 0; i < dataManipulator.noOfExercises(index)-1; i++) {
             addBoxRow(i);
         }
 
     }
 
-    // Adds a row of exercises
+    // Adds a row of exercise labels
     public void addBoxRow(int i)
     {
         int yPosition = (i+1) *50 + 120;

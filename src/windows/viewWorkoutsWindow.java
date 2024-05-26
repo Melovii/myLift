@@ -21,10 +21,11 @@ public class viewWorkoutsWindow extends JFrame
 
     ImageIcon icon = new ImageIcon("src/resources/images/icon.png");
 
+    dataManipulation dataManipulator = new dataManipulation();
+
     viewWorkoutsWindow()
     {
 
-        dataManipulation dataManipulator = new dataManipulation();
         // ---  ---  WINDOW PROPERTIES  ---  ---
         this.setLayout(null);
         this.setSize(520, 600);
@@ -40,7 +41,7 @@ public class viewWorkoutsWindow extends JFrame
 
 
 
-        // ---  ---  ---  ---  BUTTONS AND ACTIONS ---  ---  ---  ---
+        // ---  ---  --- BUTTONS AND ACTIONS ---  ---  ---
 
         returnB = new JButton("←");
         returnB.setFont(new Font("Calibri", Font.BOLD, 17));
@@ -84,6 +85,8 @@ public class viewWorkoutsWindow extends JFrame
         int height = 75;
         int numWorkouts = dataManipulator.noOfFiles();
 
+
+        // Create Labels and Buttons to view based on how many workouts there are
         for (int i=0; i < numWorkouts; i++) {
 
             String workoutName = dataManipulator.workoutNames[i];
@@ -113,7 +116,7 @@ public class viewWorkoutsWindow extends JFrame
 
             infoB[i].addActionListener(
                     (e) -> {
-                        new workoutInfoWindow(index); // TODO: add index for parameter
+                        new workoutInfoWindow(index);
                         System.out.println(index);
                     }
             );
@@ -136,7 +139,7 @@ public class viewWorkoutsWindow extends JFrame
 
             height += 75;
         }
-        // ---------------------------------------------------
+        // -----------------------------------------
 
         workoutNameTitleL = new JLabel("Workout Name");
         workoutNameTitleL.setBounds(175, 20, 200, 50);

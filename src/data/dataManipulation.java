@@ -16,7 +16,7 @@ public class dataManipulation {
 
     public dataManipulation(int index) {
 
-        // getting numberoflines of the workout
+        // getting the number of lines of a workout file
         try {
             String fileName = "src/resources/workouts/workout_" + index + ".txt";
             BufferedReader br1 = new BufferedReader(new FileReader(fileName));
@@ -30,7 +30,6 @@ public class dataManipulation {
             e.printStackTrace();
         }
 
-        // no clue why we dont need the -2 anymore but it works
         this.exerciseName = new String[(noOfExercises(index))];
         this.numSets = new int[(noOfExercises(index))];
         this.numReps = new int[(noOfExercises(index))];
@@ -47,8 +46,8 @@ public class dataManipulation {
         this.workoutNames = new String[noOfFiles()];
     }
 
+    // Method to save data using ArrayList
     public void saveData(workout newWorkout)
-    // method to save data using ArrayList
     {
         try {
             int index = getNextIndex();
@@ -58,6 +57,7 @@ public class dataManipulation {
             bw.write(newWorkout.workoutName);
             bw.newLine();
 
+            // Increment through object content and write data
             for (exercise exc : newWorkout.exercises) {
                 bw.write(exc.exerciseName);
                 bw.newLine();
@@ -77,6 +77,7 @@ public class dataManipulation {
         }
     }
 
+    // Parse the index file content as an integer
     private int getNextIndex() {
         try {
             File file = new File(INDEX_FILE);
@@ -94,6 +95,7 @@ public class dataManipulation {
         }
     }
 
+    // Increment index
     private void updateIndex(int index) {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(INDEX_FILE));
@@ -136,7 +138,7 @@ public class dataManipulation {
         }
     }
 
-    public int noOfFiles() {        //in other words, number of workouts
+    public int noOfFiles() {   // number of workouts
         int noOfWorkouts = 0;
         int i = 1;
         String fileName;
@@ -177,7 +179,7 @@ public class dataManipulation {
                 workoutNames[i-1] = br.readLine();
                 br.close();
             } catch(Exception e) {
-                e.printStackTrace();  // Print the stack trace for better debugging
+                e.printStackTrace();
             }
         }
     }

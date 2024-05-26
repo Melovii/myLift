@@ -15,6 +15,3 @@ public class exercise
         this.restTime = restTime;
     }
 }
-
-// add getters and setters for member variables
-// perform calculations or manipulations on exercise data
