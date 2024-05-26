@@ -46,12 +46,6 @@ public class workoutWindow extends JFrame {
         dataManipulator.loadData(index);
         sound = new sound();
 
-        // --- --- PANEL PROPERTIES --- ---
-
-
-        // --------------------------------
-
-
 
         // --- --- LABEL PROPERTIES --- ---
         currentL = new JLabel();
@@ -159,7 +153,7 @@ public class workoutWindow extends JFrame {
 
         exitB = new JButton("X");
         exitB.setFocusable(false);
-        exitB.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 31));
+        exitB.setFont(new Font("Copperplate Gothic Light", Font.BOLD, 27));
         exitB.setBackground(ButtonC);
         exitB.setForeground(Red);
         exitB.setBounds(720, 15, 56, 56);
@@ -169,7 +163,6 @@ public class workoutWindow extends JFrame {
 
 
         // --- --- BUTTON ACTIONS --- ---
-        // TODO: make a breakpoint for when next and current exercise are equal (in terms of index)
         AtomicInteger i = new AtomicInteger();
         AtomicInteger j = new AtomicInteger();
         AtomicInteger elapsedTimeFlag = new AtomicInteger();

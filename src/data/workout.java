@@ -6,18 +6,9 @@ public class workout {
     public String workoutName;
     public ArrayList<exercise> exercises; // ArrayList to store exercise objects
 
-    // Constructor
     public workout(String workoutName)
     {
         this.workoutName = workoutName;
-        this.exercises = new ArrayList<exercise>();
+        this.exercises = new ArrayList<>();
     }
 }
-// TODO: check if getters are necessary
-//public String getWorkoutName() {
-//    return workoutName;
-//}
-//
-//public void setWorkoutName(String name) {
-//    workoutName = name;
-//}

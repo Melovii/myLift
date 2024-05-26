@@ -1,4 +1,4 @@
-Upper Day
+Sample Workout
 Bench Press
 3
 10
@@ -6,7 +6,7 @@ Bench Press
 Pull Up
 4
 8
-5
+120
 Incline Bench Press
 3
 12

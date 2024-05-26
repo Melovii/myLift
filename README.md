@@ -15,4 +15,16 @@ Efficiency:
 to let you know your rest is done!
 
 
+
+Instructions for .exe:
+- 
+- Download Launch4j from https://sourceforge.net/projects/launch4j/files/latest/download
+- Run the setup and launch the app
+- Load the "myLift.xml" config by clicking on the folder icon
+- Enjoy!
+
+
+Oracle OpenJDK version 21.0.2 
+
 made by: mel n vrosh©️
+

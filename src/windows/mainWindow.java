@@ -11,10 +11,8 @@ public class mainWindow extends JFrame
     JButton addWorkoutB, viewWorkoutsB, infoB;
 
     Color BackgroundC = new Color(0xFF2B2D30);
-    Color LabelC = new Color(0x73fbfd);
     Color WhiteC = new Color(0xfbffff);
     Color ButtonC = new Color(0x363A3D);
-    Color ShadowC = new Color(0x191C1D);
 
     Image title;
     ImageIcon icon = new ImageIcon("src/resources/images/icon.png");
@@ -60,15 +58,15 @@ public class mainWindow extends JFrame
 
 
         addWorkoutB.addActionListener(
-                (e) -> {
-                    new addWorkoutWindow();
-                }
+                (e) -> new addWorkoutWindow()
         );
 
 
 
         String[] responses = {"OK", "Create Workout"};
         ImageIcon error = new ImageIcon("src/resources/images/error.png");
+
+        // Show Option Dialog if there are no workouts to list
         viewWorkoutsB.addActionListener(
                 (e) -> {
                     if (dataManipulator.noOfFiles()==0) {

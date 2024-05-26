@@ -42,8 +42,8 @@ public class infoWindow extends JFrame
         infoTextArea.setForeground(WhiteC);
         infoTextArea.setBorder(BorderFactory.createLineBorder(BackgroundC, 40));
 
-        //  SET LABEL TO FILE CONTENTS
 
+        //  Set label to file contents
         try {
             BufferedReader bf = new BufferedReader(new FileReader("src/resources/info.txt"));
             StringBuffer fileContent = new StringBuffer();

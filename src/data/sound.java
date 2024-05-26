@@ -22,11 +22,11 @@ public class sound {
             clip = AudioSystem.getClip();
             clip.open(ais);
             fc = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
-        }catch(Exception e) {
+        } catch(Exception e) {
         }
     }
 
-    public void play(){
+    public void play() {
         clip.start();
         currentVol = -10.0f;
         fc.setValue(currentVol);
