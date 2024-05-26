@@ -1,30 +1,32 @@
-Plan Your Workouts:
-- Click "Add Workout" to create routines with exercises, sets, reps, and rest time
+# MyLift - Plan Your Workouts
+> Workout Planner & Timer made as a first year university programming project
+
+### Usage
+#### Adding workout
+Click "Add Workout" to create routines with exercises, sets, reps, and rest time
 between each set.
+    - ***Rep**: The repetition of a single exercise*
+    - ***Set**: A set of reps*
+        - 3 sets of 8 reps = 24 repetitions of an exercise with rest time in between sets
 
-    - Rep: The repetition of a single exercise
-    - Set: A set of reps (3 sets of 8 reps = 24 repetitions of an exercise with rest
-    time in between sets)
-
-Start working out:
-- Click "Start Workout" to view a list of your workouts. Click the 'i' button for
+#### Start working out:
+- Click "<u>**Start Workout** </u>" to view a list of your workouts. Click the `i` button for
 more information about your workout, or click the play button to get started!
 
-Efficiency:
+#### Efficiency
 - You can focus on resting while the app handles the rest time. A sound plays
 to let you know your rest is done!
 
 
 
-Instructions for .exe:
-- 
-- Download Launch4j from https://sourceforge.net/projects/launch4j/files/latest/download
-- Run the setup and launch the app
-- Load the "myLift.xml" config by clicking on the folder icon
-- Enjoy!
+### Instructions for `.exe`:
+ 
+1. Download Launch4j from https://sourceforge.net/projects/launch4j/files/latest/download
+2. Run the setup and launch the app
+3. Load the "myLift.xml" config by clicking on the folder icon
+4. Enjoy!
 
 
-Oracle OpenJDK version 21.0.2 
+*Oracle OpenJDK version `21.0.2`*
 
-copyright: mel n vrosh©️
-
+Copyright: mel n vrosh ©️
