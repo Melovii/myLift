@@ -26,5 +26,5 @@ Instructions for .exe:
 
 Oracle OpenJDK version 21.0.2 
 
-made by: mel n vrosh©️
+copyright: mel n vrosh©️
 
