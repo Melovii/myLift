@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+wd=$(dirname $(realpath $0))
+
+bin=$wd/bin
+src=$wd/src
+
+rm -rf $bin
+
+mkdir $bin
+
+# Compile java to classes
+javac -encoding utf8 -d $bin -cp $src $src/myLift.java
+
+# Release as jar
+# jar cvfe $wd/calculator.jar myLift -C $bin .
