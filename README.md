@@ -17,20 +17,20 @@ more information about your workout, or click the play button to get started!
 - You can focus on resting while the app handles the rest time. A sound plays
 to let you know your rest is done!
 
-# Building
-## Prerequisites
+## Building
+### Prerequisites
 Full Java JDK version 8 or higher.
 
-### Windows
+#### Windows
 ```cmd
 .\build
 ```
-### Linux/UNIX
+#### Linux/UNIX
 ```sh
 ./build
 ```
 
-# Running
+## Running
 
 ```
 java -cp bin myLift
